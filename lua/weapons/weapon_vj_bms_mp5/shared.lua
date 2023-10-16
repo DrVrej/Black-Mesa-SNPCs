@@ -25,4 +25,4 @@ SWEP.Primary.Sound = {"vj_weapons/bms_mp5/close1.wav"}
 SWEP.Primary.DistantSound = {"vj_weapons/bms_mp5/distant1.wav"}
 SWEP.PrimaryEffects_MuzzleAttachment = "muzzle"
 SWEP.PrimaryEffects_ShellAttachment = "ejectbrass"
-SWEP.PrimaryEffects_ShellType = "VJ_Weapon_PistolShell1"
+SWEP.PrimaryEffects_ShellType = "ShellEject"
