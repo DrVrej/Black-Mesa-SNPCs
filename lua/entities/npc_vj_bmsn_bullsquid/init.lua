@@ -67,9 +67,9 @@ function ENT:MultipleMeleeAttacks()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackCode_GetShootPos(TheProjectile)
-	return self:CalculateProjectile("Curve", self:GetAttachment(self:LookupAttachment(self.RangeUseAttachmentForPosID)).Pos, self:GetEnemy():GetPos() + self:GetEnemy():OBBCenter(), 1500) + self:GetUp()*math.Rand(-30,30) + self:GetRight()*math.Rand(-40,40)
-	//return (self:GetEnemy():GetPos() - self:GetAttachment(self:LookupAttachment(self.RangeUseAttachmentForPosID)).Pos) + self:GetUp()*math.Rand(300,400) + self:GetRight()*math.Rand(-20,80)
+function ENT:RangeAttackCode_GetShootPos(projectile)
+	local projPos = projectile:GetPos()
+	return self:CalculateProjectile("Curve", projPos, self:GetAimPosition(self:GetEnemy(), projPos, 1, 1500), 1500) + self:GetUp() * math.Rand(-30, 30) + self:GetRight() * math.Rand(-40, 40)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:MeleeAttackKnockbackVelocity(hitEnt)
