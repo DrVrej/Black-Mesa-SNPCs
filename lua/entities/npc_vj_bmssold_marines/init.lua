@@ -94,9 +94,9 @@ function ENT:CustomOnInitialize()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnSetupWeaponHoldTypeAnims(hType)
+function ENT:CustomOnSetupWeaponHoldTypeAnims(wepHoldType)
 	timer.Simple(0.1, function()
-		if IsValid(self) && (hType == "ar2" or hType == "smg" or hType == "rpg") then
+		if IsValid(self) && (wepHoldType == "ar2" or wepHoldType == "smg" or wepHoldType == "rpg") then
 			self.WeaponAnimTranslations[ACT_IDLE] = ACT_IDLE
 		end
 	end)
