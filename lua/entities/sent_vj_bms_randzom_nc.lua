@@ -7,7 +7,7 @@ AddCSLuaFile()
 
 ENT.Base 			= "obj_vj_spawner_base"
 ENT.Type 			= "anim"
-ENT.PrintName 		= "Random Scientist"
+ENT.PrintName 		= "Random Crabless Zombie"
 ENT.Author 			= "DrVrej"
 ENT.Contact 		= "http://steamcommunity.com/groups/vrejgaming"
 ENT.Purpose 		= "Spawn it and fight with it!"
@@ -22,8 +22,12 @@ if !SERVER then return end
 ENT.SingleSpawner = true -- If set to true, it will spawn the entities once then remove itself
 ENT.EntitiesToSpawn = {
 	{Entities = {
-			"npc_vj_bms_scientist",
-			"npc_vj_bms_scientistf",
+			"npc_vj_bms_zscientist_nc",
+			"npc_vj_bms_zsecurity_nc:3",
+			"npc_vj_bms_zhecu_nc:4",
+			"npc_vj_bms_zscientistto_nc:8",
+			"npc_vj_bms_zsecurityto_nc:10",
+			"npc_vj_bms_zhecuto_nc:12"
 		}
 	}
 }
