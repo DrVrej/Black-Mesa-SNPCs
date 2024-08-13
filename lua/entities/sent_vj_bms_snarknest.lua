@@ -49,7 +49,7 @@ end
 function ENT:OnTakeDamage(dmginfo,data)
 	self:SpawnBloodParticles(dmginfo)
 	self:SpawnBloodDecal(dmginfo)
-	self:EmitSound("vj_flesh/alien_flesh1.wav", 80, math.random(80, 100))
+	self:EmitSound("vj_base/impact/flesh_alien.wav", 80, math.random(80, 100))
 	
 	self:SetHealth(self:Health() -dmginfo:GetDamage())
 	if self:Health() <= 0 && !self.Dead then
