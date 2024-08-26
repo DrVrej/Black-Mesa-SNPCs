@@ -28,8 +28,6 @@ ENT.TimeUntilLeapAttackDamage = 0.4 -- How much time until it runs the leap dama
 ENT.NextLeapAttackTime = 0.4 -- How much time until it can use a leap attack?
 ENT.NextAnyAttackTime_Leap = 0.4 -- How much time until it can use any attack again? | Counted in Seconds
 ENT.LeapAttackExtraTimers = {0.2, 0.6} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
-ENT.LeapAttackVelocityForward = 50 -- How much forward force should it apply?
-ENT.LeapAttackVelocityUp = 180 -- How much upward force should it apply?
 ENT.LeapAttackDamage = 1
 ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
 
@@ -79,6 +77,11 @@ end
 function ENT:CustomOnMeleeAttack_AfterChecks(TheHitEntity)
 	//PrintMessage(HUD_PRINTTALK,"MELEE")
 	self.Snark_EnergyTime = self.Snark_EnergyTime + 0.5
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:GetLeapAttackVelocity()
+	local ene = self:GetEnemy()
+	return VJ.CalculateTrajectory(self, ene, "Curve", self:GetPos() + self:OBBCenter(), ene:GetPos() + ene:OBBCenter(), 10) + self:GetForward() * 200 + self:GetUp() * 50
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnLeapAttack_AfterChecks(TheHitEntity)
