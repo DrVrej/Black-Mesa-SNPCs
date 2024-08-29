@@ -23,7 +23,7 @@ ENT.NextAnyAttackTime_Melee = 0.5 -- How much time until it can use any attack a
 ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
 ENT.CanCrouchOnWeaponAttack = false -- Can it crouch while shooting?
 ENT.Weapon_NoSpawnMenu = true -- If set to true, the NPC weapon setting in the spawnmenu will not be applied for this SNPC
-ENT.WeaponSpread = 0.9 -- What's the spread of the weapon? | Closer to 0 = better accuracy, Farther than 1 = worse accuracy
+ENT.Weapon_Accuracy = 0.9 -- What's the spread of the weapon? | Closer to 0 = better accuracy, Farther than 1 = worse accuracy
 ENT.CallForBackUpOnDamage = false -- Should the SNPC call for help when damaged? (Only happens if the SNPC hasn't seen a enemy)
 ENT.BringFriendsOnDeath = false -- Should the NPC's allies come to its position while it's dying?
 ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true -- Should it only move away and not hide behind cover?
