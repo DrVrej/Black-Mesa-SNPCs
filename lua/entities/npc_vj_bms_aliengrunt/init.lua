@@ -27,8 +27,7 @@ ENT.RangeAttackReps = 8 -- How many times does it run the projectile code?
 ENT.FootStepTimeRun = 0.5 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 1 -- Next foot step sound when it is walking
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav","vJ_bms_aliengrunt/step2.wav","vJ_bms_aliengrunt/step3.wav","vJ_bms_aliengrunt/step4.wav","vJ_bms_aliengrunt/step5.wav","vJ_bms_aliengrunt/step6.wav"}
 ENT.SoundTbl_Idle = {"vJ_bms_aliengrunt/idle1.wav","vJ_bms_aliengrunt/idle2.wav","vJ_bms_aliengrunt/idle3.wav","vJ_bms_aliengrunt/idle4.wav","vJ_bms_aliengrunt/idle5.wav","vJ_bms_aliengrunt/idle6.wav"}
 ENT.SoundTbl_Alert = {"vJ_bms_aliengrunt/alert1.wav","vJ_bms_aliengrunt/alert2.wav","vJ_bms_aliengrunt/alert3.wav","vJ_bms_aliengrunt/alert4.wav","vJ_bms_aliengrunt/alert5.wav","vJ_bms_aliengrunt/alert6.wav"}

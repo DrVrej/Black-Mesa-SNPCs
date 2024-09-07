@@ -35,8 +35,7 @@ ENT.FootStepTimeWalk = 1 -- Next foot step sound when it is walking
 ENT.CanFlinch = 2 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
 ENT.FlinchChance = 1 -- Chance of it flinching from 1 to x | 1 will make it always flinch
 ENT.AnimTbl_Flinch = ACT_SMALL_FLINCH -- If it uses normal based animation, use this
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_bms_houndeye/he_step1.wav","vj_bms_houndeye/he_step2.wav","vj_bms_houndeye/he_step3.wav"}
 ENT.SoundTbl_Idle = {"vj_bms_houndeye/he_idle1.wav","vj_bms_houndeye/he_idle2.wav","vj_bms_houndeye/he_idle3.wav","vj_bms_houndeye/he_idle4.wav","vj_bms_houndeye/he_idle5.wav","vj_bms_houndeye/he_idle6.wav","vj_bms_houndeye/he_idle7.wav","vj_bms_houndeye/he_idle8.wav","vj_bms_houndeye/he_idle9.wav","vj_bms_houndeye/he_idle10.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_houndeye/he_alert1.wav","vj_bms_houndeye/he_alert2.wav","vj_bms_houndeye/he_alert3.wav","vj_bms_houndeye/he_alert4.wav","vj_bms_houndeye/he_alert5.wav","vj_bms_houndeye/he_alert6.wav","vj_bms_houndeye/he_alert7.wav","vj_bms_houndeye/he_alert8.wav","vj_bms_houndeye/he_alert9.wav"}

@@ -35,8 +35,7 @@ ENT.IdleAlwaysWander = true -- Should the NPC constantly wander while idling?
 ENT.HasDeathRagdoll = false -- Should the NPC spawn a corpse when it dies?
 ENT.PushProps = false -- Should it push props when trying to move?
 ENT.FindEnemy_UseSphere = true -- Should the NPC see all around? (360 degrees) | Objects and walls can still block its sight!
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = {"vj_bms_snark/hunt1.wav","vj_bms_snark/hunt2.wav","vj_bms_snark/hunt3.wav","vj_bms_snark/hunt4.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_snark/deploy1.wav","vj_bms_snark/deploy2.wav","vj_bms_snark/deploy3.wav"}
 ENT.SoundTbl_MeleeAttack = {"vj_bms_snark/bite01.wav","vj_bms_snark/bite02.wav","vj_bms_snark/bite03.wav","vj_bms_snark/bite04.wav","vj_bms_snark/bite05.wav"}

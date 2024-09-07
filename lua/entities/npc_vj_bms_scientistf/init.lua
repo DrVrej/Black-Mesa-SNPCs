@@ -19,8 +19,7 @@ ENT.HasOnPlayerSight = true -- Should do something when it sees the enemy? Examp
 ENT.OnPlayerSightDispositionLevel = 1 -- 0 = Run it every time | 1 = Run it only when friendly to player | 2 = Run it only when enemy to player
 ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"npc/footsteps/hardboot_generic1.wav","npc/footsteps/hardboot_generic2.wav","npc/footsteps/hardboot_generic3.wav","npc/footsteps/hardboot_generic4.wav","npc/footsteps/hardboot_generic5.wav","npc/footsteps/hardboot_generic6.wav",}
 ENT.SoundTbl_Idle = {"vj_bms_scientistfemale/Idle1.wav","vj_bms_scientistfemale/Idle2.wav","vj_bms_scientistfemale/Idle3.wav","vj_bms_scientistfemale/Idle4.wav","vj_bms_scientistfemale/Idle5.wav","vj_bms_scientistfemale/Idle6.wav","vj_bms_scientistfemale/Idle7.wav","vj_bms_scientistfemale/Idle8.wav","vj_bms_scientistfemale/Idle9.wav","vj_bms_scientistfemale/Idle10.wav","vj_bms_scientistfemale/Idle11.wav","vj_bms_scientistfemale/Idle12.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_scientistfemale/alert1.wav","vj_bms_scientistfemale/alert2.wav","vj_bms_scientistfemale/alert3.wav","vj_bms_scientistfemale/alert4.wav","vj_bms_scientistfemale/alert5.wav","vj_bms_scientistfemale/alert6.wav"}

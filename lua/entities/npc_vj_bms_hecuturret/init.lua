@@ -27,8 +27,7 @@ ENT.TimeUntilRangeAttackProjectileRelease = 0.1 -- How much time until the proje
 ENT.RangeAttackReps = 3 -- How many times does it run the projectile code?
 ENT.NextRangeAttackTime = 0 -- How much time until it can use a range attack?
 ENT.NextAnyAttackTime_Range = 0.3 -- How much time until it can use any attack again? | Counted in Seconds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Alert = {"vj_bms_groundturret/deploy.wav"}
 ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav","ambient/energy/spark2.wav","ambient/energy/spark3.wav","ambient/energy/spark4.wav"}
 ENT.SoundTbl_Death = {"vj_bms_groundturret/die.wav"}

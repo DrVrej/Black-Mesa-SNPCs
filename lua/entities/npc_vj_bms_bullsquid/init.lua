@@ -40,8 +40,7 @@ ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior 
 ENT.FootStepTimeRun = 0.25 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav","vj_bms_bullsquid/step2.wav"}
 ENT.SoundTbl_Idle = {"vj_bms_bullsquid/Idle1.wav","vj_bms_bullsquid/Idle2.wav","vj_bms_bullsquid/Idle3.wav","vj_bms_bullsquid/Idle4.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_bullsquid/detect1.wav","vj_bms_bullsquid/detect2.wav","vj_bms_bullsquid/detect3.wav"}
