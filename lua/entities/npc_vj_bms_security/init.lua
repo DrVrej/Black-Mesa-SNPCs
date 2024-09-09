@@ -73,7 +73,7 @@ function ENT:Security_WeaponHolster(Type)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDoChangeWeapon(newWeapon, oldWeapon, invSwitch)
+function ENT:OnChangeWeapon(newWeapon, oldWeapon, invSwitch)
 	if !invSwitch && newWeapon:GetClass() == "weapon_vj_glock17" then
 		self:SetWeaponState(VJ.NPC_WEP_STATE_HOLSTERED)
 		self:SetBodygroup(4, 1)
