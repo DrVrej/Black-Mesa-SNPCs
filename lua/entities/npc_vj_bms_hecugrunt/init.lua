@@ -23,7 +23,7 @@ ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = {"vj_bms_hecu/idle1.wav","vj_bms_hecu/idle2.wav","vj_bms_hecu/idle3.wav","vj_bms_hecu/idle4.wav","vj_bms_hecu/idle5.wav","vj_bms_hecu/idle6.wav","vj_bms_hecu/idle7.wav","vj_bms_hecu/idle8.wav","vj_bms_hecu/idle9.wav","vj_bms_hecu/idle10.wav","vj_bms_hecu/idle11.wav","vj_bms_hecu/idle12.wav","vj_bms_hecu/idle13.wav","vj_bms_hecu/idle14.wav","vj_bms_hecu/idle15.wav","vj_bms_hecu/idle16.wav"}
 ENT.SoundTbl_CombatIdle = {"vj_bms_hecu/idle_combat1.wav","vj_bms_hecu/idle_combat2.wav","vj_bms_hecu/idle_combat3.wav","vj_bms_hecu/idle_combat4.wav","vj_bms_hecu/idle_combat5.wav","vj_bms_hecu/idle_combat6.wav"}
@@ -42,7 +42,7 @@ ENT.OnPlayerSightSoundChance = 2
 ENT.HECU_Beret = false
 ENT.HECU_GasMask = false
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	-- Beret Hat
 	if math.random(1, 6) == 1 then
 		local beretHat = ents.Create("prop_physics")
@@ -104,7 +104,7 @@ local colorRed = VJ.Color2Byte(Color(130, 19, 10))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorRed)
@@ -133,7 +133,7 @@ function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	return true
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDeath_AfterCorpseSpawned(dmginfo, hitgroup, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
 	if self:GetBodygroup(2) == 1 then
 		corpseEnt:SetBodygroup(2, 0)
 		self:CreateExtraDeathCorpse("prop_physics", "models/humans/props/marine_cigar.mdl", {Pos=self:LocalToWorld(Vector(0, 0, -5))})

@@ -13,7 +13,7 @@ ENT.VJ_NPC_Class = {"CLASS_BLACKOPS"} -- NPCs with the same class with be allied
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDamage = 10
 ENT.MeleeAttackDistance = 35 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 70 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
@@ -23,7 +23,7 @@ ENT.NextAnyAttackTime_Melee = 0.5 -- How much time until it can use any attack a
 ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
 ENT.CanCrouchOnWeaponAttack = false -- Can it crouch while shooting?
 ENT.Weapon_NoSpawnMenu = true -- If set to true, the NPC weapon setting in the spawnmenu will not be applied for this SNPC
-ENT.Weapon_Accuracy = 0.9 -- What's the spread of the weapon? | Closer to 0 = better accuracy, Farther than 1 = worse accuracy
+ENT.Weapon_Accuracy = 0.9 -- NPC's accuracy with weapons, affects bullet spread! | x < 1 = Better accuracy | x > 1 = Worse accuracy
 ENT.CallForBackUpOnDamage = false -- Should the SNPC call for help when damaged? (Only happens if the SNPC hasn't seen a enemy)
 ENT.BringFriendsOnDeath = false -- Should the NPC's allies come to its position while it's dying?
 ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true -- Should it only move away and not hide behind cover?
@@ -42,7 +42,7 @@ ENT.Assassin_NextCloakT = 0
 ENT.Assassin_Cloaking = false
 ENT.Assassin_ControllerCloakLevel = 0
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:CapabilitiesAdd(bit.bor(CAP_MOVE_JUMP))
 	//self:SetMaterial("models/effects/vol_ight001_")
 
@@ -147,7 +147,7 @@ function ENT:BMSASSASSIN_DOCLOAK()
 	self.Assassin_NextCloakT = CurTime() + math.random(13, 14)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink_AIEnabled()
+function ENT:OnThinkActive()
 	if self.VJ_IsBeingControlled && self.VJ_TheController:KeyDown(IN_JUMP) then
 		self.VJ_TheController:PrintMessage(HUD_PRINTCENTER, "Changing Camouflage!")
 		if self.Assassin_ControllerCloakLevel == 0 then
@@ -174,15 +174,17 @@ function ENT:CustomOnThink_AIEnabled()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAlert()
+function ENT:OnAlert(ent)
 	self.Assassin_NextJumpT = CurTime() + math.Rand(2, 3)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnPriorToKilled(dmginfo,hitgroup)
-	self:BMSASSASSIN_RESETCLOAK()
+function ENT:OnDeath(dmginfo, hitgroup, status)
+	if status == "Initial" then
+		self:BMSASSASSIN_RESETCLOAK()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDeath_AfterCorpseSpawned(dmginfo, hitgroup, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
 	-- Create the second pistol to drop with the gun
 	self:CreateExtraDeathCorpse("weapon_vj_glock17", "None", {HasVel=false}, function(extraent)
 		local phys = extraent:GetPhysicsObject()
@@ -193,7 +195,7 @@ function ENT:CustomOnDeath_AfterCorpseSpawned(dmginfo, hitgroup, corpseEnt)
 	end)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDropWeapon(dmginfo, hitgroup, wepEnt)
+function ENT:OnDeathWeaponDrop(dmginfo, hitgroup, wepEnt)
 	wepEnt.WorldModel_Invisible = false
 	wepEnt:SetNW2Bool("VJ_WorldModel_Invisible", false)
 end
@@ -202,7 +204,7 @@ local colorRed = VJ.Color2Byte(Color(130, 19, 10))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorRed)

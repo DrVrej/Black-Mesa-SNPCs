@@ -14,7 +14,7 @@ ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should 
 ENT.Immune_Sonic = true -- Immune to sonic damage
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = ACT_RANGE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_RANGE_ATTACK1
 ENT.MeleeAttackDistance = 164 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 300 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
@@ -25,7 +25,7 @@ ENT.MeleeAttackDSPSoundUseDamage = false -- Should it only do the DSP effect if 
 ENT.DisableDefaultMeleeAttackDamageCode = true -- Disables the default melee attack damage code
 
 ENT.HasDeathAnimation = true -- Does it play an animation when it dies?
-ENT.AnimTbl_Death = ACT_DIESIMPLE -- Death Animations
+ENT.AnimTbl_Death = ACT_DIESIMPLE
 ENT.DeathAnimationChance = 2 -- Put 1 if you want it to play the animation all the time
 ENT.PushProps = false -- Should it push props when trying to move?
 ENT.AttackProps = false -- Should it attack props when trying to move?
@@ -34,7 +34,7 @@ ENT.FootStepTimeWalk = 1 -- Next foot step sound when it is walking
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 2 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
 ENT.FlinchChance = 1 -- Chance of it flinching from 1 to x | 1 will make it always flinch
-ENT.AnimTbl_Flinch = ACT_SMALL_FLINCH -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_SMALL_FLINCH -- The regular flinch animations to play
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_bms_houndeye/he_step1.wav","vj_bms_houndeye/he_step2.wav","vj_bms_houndeye/he_step3.wav"}
 ENT.SoundTbl_Idle = {"vj_bms_houndeye/he_idle1.wav","vj_bms_houndeye/he_idle2.wav","vj_bms_houndeye/he_idle3.wav","vj_bms_houndeye/he_idle4.wav","vj_bms_houndeye/he_idle5.wav","vj_bms_houndeye/he_idle6.wav","vj_bms_houndeye/he_idle7.wav","vj_bms_houndeye/he_idle8.wav","vj_bms_houndeye/he_idle9.wav","vj_bms_houndeye/he_idle10.wav"}
@@ -49,16 +49,15 @@ local animAlert = {"vjseq_madidle", "vjseq_madidle3"} // ACT_IDLE_ANGRY - Don't 
 -- Custom
 ENT.Houndeye_IdleAnims = ACT_IDLE
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(25, 25, 45), Vector(-25, -25, 0))
 	self.Houndeye_IdleAnims = {ACT_IDLE, ACT_IDLE, ACT_IDLE, ACT_IDLE, ACT_IDLE, ACT_IDLE, VJ.SequenceToActivity(self, "leaderlook")}
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
-	print("OnHandleAnimEvent", eventName, ev, evTime, evCycle, evType, evOptions)
 	if eventName == "AE_HOUND_RANGE_ATTACK1" then
 		self:MeleeAttackCode()
 	end
@@ -71,7 +70,7 @@ function ENT:TranslateActivity(act)
 	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAlert()
+function ENT:OnAlert(ent)
 	if self.VJ_IsBeingControlled then return end
 	self:VJ_ACT_PLAYACTIVITY(animAlert, true, 1, true)
 end
@@ -87,15 +86,18 @@ function ENT:CustomOnMeleeAttack_BeforeChecks()
 	VJ.ApplyRadiusDamage(self, self, self:GetPos(), 400, 25, self.MeleeAttackDamageType, true, true, {DisableVisibilityCheck=true, Force=80})
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomDeathAnimationCode(dmginfo, hitgroup)
-	self:SetLocalPos(Vector(self:GetPos().x, self:GetPos().y, self:GetPos().z + 5))
+function ENT:OnDeath(dmginfo, hitgroup, status)
+	-- Fix getting stuck in ground due to death anim
+	if status == "DeathAnim" then
+		self:SetLocalPos(Vector(self:GetPos().x, self:GetPos().y, self:GetPos().z + 5))
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorYellow)

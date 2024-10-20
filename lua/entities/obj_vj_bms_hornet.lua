@@ -50,7 +50,7 @@ function ENT:CustomPhysicsObjectOnInitialize(phys)
 	phys:EnableGravity(false)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	timer.Simple(5,function() if IsValid(self) then self:Remove() end end)
 	
 	util.SpriteTrail(self, 0, Color(255, math.random(50, 200), 0, 120), true, 12, 0, 1, 0.04, "sprites/vj_bms_hornettrail.vmt")
@@ -75,7 +75,7 @@ function ENT:CustomOnInitialize()
 	self:DeleteOnRemove(sprite)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink()
+function ENT:OnThink()
 	if IsValid(self.MyEnemy) then -- Homing Behavior
 		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
@@ -110,7 +110,7 @@ end
 local defAng = Angle(0, 0, 0)
 --
 function ENT:DeathEffects(data,phys)
-	local effectData = effectData()
+	local effectData = EffectData()
 	effectData:SetOrigin(data.HitPos)
 	effectData:SetScale(0.6)
 	util.Effect("StriderBlood", effectData)

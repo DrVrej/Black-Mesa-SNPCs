@@ -14,7 +14,7 @@ ENT.BloodColor = "Red" -- The blood type, this will determine what it should use
 ENT.FriendsWithAllPlayerAllies = true -- Should this NPC be friends with other player allies?
 ENT.BecomeEnemyToPlayer = true -- Should the friendly SNPC become enemy towards the player if it's damaged by a player?
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = {"vjseq_swing"} -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = {"vjseq_swing"}
 ENT.MeleeAttackDamage = 10
 //ENT.Weapon_FiringDistanceClose = 10 -- How close until it stops shooting
 ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
@@ -34,7 +34,7 @@ ENT.SoundTbl_BecomeEnemyToPlayer = {"vj_bms_securityguard/hateplayer1.wav","vj_b
 ENT.SoundTbl_OnPlayerSight = {"vj_bms_securityguard/sawplayer1.wav","vj_bms_securityguard/sawplayer2.wav","vj_bms_securityguard/sawplayer3.wav","vj_bms_securityguard/sawplayer4.wav","vj_bms_securityguard/sawplayer5.wav","vj_bms_securityguard/sawplayer6.wav",}
 ENT.SoundTbl_DamageByPlayer = {"vj_bms_securityguard/stupidplayer1.wav","vj_bms_securityguard/stupidplayer2.wav","vj_bms_securityguard/stupidplayer3.wav","vj_bms_securityguard/stupidplayer4.wav","vj_bms_securityguard/stupidplayer5.wav","vj_bms_securityguard/stupidplayer6.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetSkin(math.random(0, 14))
 	self:SetBodygroup(2, math.random(0, 1)) -- Helmet
 	if math.random(0, 6) == 0 then -- Vest
@@ -73,7 +73,7 @@ function ENT:Security_WeaponHolster(Type)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:OnChangeWeapon(newWeapon, oldWeapon, invSwitch)
+function ENT:OnWeaponChange(newWeapon, oldWeapon, invSwitch)
 	if !invSwitch && newWeapon:GetClass() == "weapon_vj_glock17" then
 		self:SetWeaponState(VJ.NPC_WEP_STATE_HOLSTERED)
 		self:SetBodygroup(4, 1)
@@ -81,7 +81,7 @@ function ENT:OnChangeWeapon(newWeapon, oldWeapon, invSwitch)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink_AIEnabled()
+function ENT:OnThinkActive()
 	if self.Dead or self:BusyWithActivity() then return end
 	if IsValid(self:GetEnemy()) then
 		if self:GetWeaponState() == VJ.NPC_WEP_STATE_HOLSTERED then self:Security_WeaponHolster(1) end
@@ -94,7 +94,7 @@ local colorRed = VJ.Color2Byte(Color(130, 19, 10))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorRed)
@@ -123,7 +123,7 @@ function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	return true
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDropWeapon(dmginfo, hitgroup, wepEnt)
+function ENT:OnDeathWeaponDrop(dmginfo, hitgroup, wepEnt)
 	self:SetBodygroup(4, 2)
 	wepEnt.WorldModel_Invisible = false
 	wepEnt:SetNW2Bool("VJ_WorldModel_Invisible", false)

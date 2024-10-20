@@ -19,8 +19,8 @@ ENT.HasMeleeAttack = false -- Can this NPC melee attack?
 ENT.HasRangeAttack = true -- Can this NPC range attack?
 ENT.DisableDefaultRangeAttackCode = true -- When true, it won't spawn the range attack entity, allowing you to make your own
 ENT.DisableRangeAttackAnimation = true -- if true, it will disable the animation code
-ENT.AnimTbl_RangeAttack = "fire" -- Range Attack Animations
-ENT.RangeDistance = 1300 -- This is how far away it can shoot
+ENT.AnimTbl_RangeAttack = "fire"
+ENT.RangeDistance = 1300 -- How far can it range attack?
 ENT.RangeToMeleeDistance = 1 -- How close does it have to be until it uses melee?
 ENT.RangeAttackAngleRadius = 100 -- What is the attack angle radius? | 100 = In front of the NPC | 180 = All around the NPC
 ENT.TimeUntilRangeAttackProjectileRelease = 0.1 -- How much time until the projectile code is ran?
@@ -40,7 +40,7 @@ ENT.HECUTurret_CurrentParameter = 0
 ENT.HECUTurret_NextAlarmT = 0
 ENT.HECUTurret_AnimIdleAngry = ACT_INVALID
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(13, 13, 60), Vector(-13, -13, 0))
 	self.HECUTurret_AnimIdleAngry = VJ.SequenceToActivity(self, "idl")
 end
@@ -52,7 +52,7 @@ function ENT:TranslateActivity(act)
 	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink()
+function ENT:OnThink()
 	local parameter = self:GetPoseParameter("aim_yaw")
 	if parameter != self.HECUTurret_CurrentParameter then
 		self.HECUTurret_TurningSD = CreateSound(self, "vj_bms_groundturret/motor_loop.wav")
@@ -64,7 +64,7 @@ function ENT:CustomOnThink()
 	self.HECUTurret_CurrentParameter = parameter
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink_AIEnabled()
+function ENT:OnThinkActive()
 	local ene = self:GetEnemy()
 	if IsValid(ene) or (self:GetNPCState() == NPC_STATE_ALERT or self:GetNPCState() == NPC_STATE_COMBAT) then
 		self.HECUTurret_StandDown = false
@@ -123,7 +123,7 @@ function ENT:CustomAttackCheck_RangeAttack()
 	return false
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAlert()
+function ENT:OnAlert(ent)
 	//self.NextResetEnemyT = CurTime() + 0.7
 	self:VJ_ACT_PLAYACTIVITY("deploy", true, 0.7)
 end
@@ -162,13 +162,15 @@ function ENT:CustomRangeAttackCode()
 	self:DeleteOnRemove(dynLight)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDeath_BeforeCorpseSpawned(dmginfo, hitgroup)
-	self:SetSkin(3)
+function ENT:OnDeath(dmginfo, hitgroup, status)
+	if status == "Finish" then
+		self:SetSkin(3)
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
 --
-function ENT:CustomOnDeath_AfterCorpseSpawned(dmginfo, hitgroup, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
 	local spawnPos = corpseEnt:GetAttachment(corpseEnt:LookupAttachment("smoke")).Pos
 	ParticleEffectAttach("smoke_exhaust_01a",PATTACH_POINT_FOLLOW,corpseEnt,4)
 	ParticleEffect("explosion_turret_break_fire", spawnPos, defAng, corpseEnt)

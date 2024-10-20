@@ -41,18 +41,18 @@ function ENT:CustomPhysicsObjectOnInitialize(phys)
 	phys:EnableDrag(false)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	ParticleEffectAttach("antlion_spit_trail", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink()
+function ENT:OnThink()
 	ParticleEffectAttach("antlion_spit", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
 --
 function ENT:DeathEffects(data,phys)
-	local effectData = effectData()
+	local effectData = EffectData()
 	effectData:SetOrigin(data.HitPos)
 	effectData:SetScale( 1 )
 	util.Effect("StriderBlood", effectData)

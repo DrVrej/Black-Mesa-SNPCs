@@ -16,9 +16,9 @@ ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
 
 ENT.HasRangeAttack = true -- Can this NPC range attack?
-ENT.AnimTbl_RangeAttack = ACT_IDLE_ANGRY -- Range Attack Animations
+ENT.AnimTbl_RangeAttack = ACT_IDLE_ANGRY
 ENT.RangeAttackEntityToSpawn = "obj_vj_bms_hornet" -- Entities that it can spawn when range attacking | If set as a table, it picks a random entity
-ENT.RangeDistance = 1000 -- This is how far away it can shoot
+ENT.RangeDistance = 1000 -- How far can it range attack?
 ENT.RangeToMeleeDistance = 250 -- How close does it have to be until it uses melee?
 ENT.TimeUntilRangeAttackProjectileRelease = 0.2 -- How much time until the projectile code is ran?
 ENT.NextRangeAttackTime = 3 -- How much time until it can use a range attack?
@@ -38,13 +38,13 @@ ENT.SoundTbl_RangeAttack = {"vJ_bms_aliengrunt/range1.wav","vJ_bms_aliengrunt/ra
 ENT.SoundTbl_Pain = {"vJ_bms_aliengrunt/pain1.wav","vJ_bms_aliengrunt/pain2.wav","vJ_bms_aliengrunt/pain3.wav","vJ_bms_aliengrunt/pain4.wav","vJ_bms_aliengrunt/pain5.wav","vJ_bms_aliengrunt/pain6.wav"}
 ENT.SoundTbl_Death = {"vJ_bms_aliengrunt/die1.wav","vJ_bms_aliengrunt/die2.wav","vJ_bms_aliengrunt/die3.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(25, 25, 85), Vector(-25, -25, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if (eventName == "AE_AGRUNT_MELEE_ATTACK_LOW" && self:GetActivity() != ACT_MELEE_ATTACK2) or eventName == "AE_AGRUNT_MELEE_ATTACK_HIGH" then
 		self:MeleeAttackCode()
@@ -85,7 +85,7 @@ local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorYellow)

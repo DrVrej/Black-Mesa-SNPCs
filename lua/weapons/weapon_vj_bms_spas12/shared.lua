@@ -19,7 +19,7 @@ SWEP.NPC_FiringDistanceScale = 0.5 -- Changes how far the NPC can fire | 1 = No 
 SWEP.Primary.Damage = 4 -- Damage
 SWEP.Primary.Force = 1 -- Force applied on the object the bullet hits
 SWEP.Primary.NumberOfShots = 7 -- How many shots per attack?
-SWEP.Primary.ClipSize = 8 -- Max amount of bullets per clip
+SWEP.Primary.ClipSize = 8 -- Max amount of rounds per clip
 SWEP.Primary.Ammo = "Buckshot" -- Ammo type
 SWEP.Primary.Sound = "vj_weapons/bms_shotgun/close1.wav"
 SWEP.Primary.DistantSound = "vj_weapons/bms_shotgun/distant1.wav"

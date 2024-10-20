@@ -13,7 +13,7 @@ ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied t
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDistance = 30 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 50 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
@@ -30,13 +30,13 @@ ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav","vj_bms_zombies/
 ENT.SoundTbl_Pain = {"vj_bms_zombies/pain1.wav","vj_bms_zombies/pain2.wav","vj_bms_zombies/pain3.wav","vj_bms_zombies/pain4.wav","vj_bms_zombies/pain5.wav","vj_bms_zombies/pain7.wav","vj_bms_zombies/pain8.wav","vj_bms_zombies/pain9.wav","vj_bms_zombies/pain10.wav"} /*,"vj_bms_zombies/pain6.wav"*/
 ENT.SoundTbl_Death = {"vj_bms_zombies/die1.wav","vj_bms_zombies/die2.wav","vj_bms_zombies/die3.wav","vj_bms_zombies/die4.wav","vj_bms_zombies/die5.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(20, 20 , 26), Vector(-20, -20, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_ZOMBIE_STEP_LEFT" or eventName == "AE_ZOMBIE_STEP_RIGHT" then
 		self:FootStepSoundCode()
@@ -45,7 +45,7 @@ function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDeath_AfterCorpseSpawned(dmginfo,  hitgroup,  corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo,  hitgroup,  corpseEnt)
 	if self:GetBodygroup(1) == 1 then return false end -- Only continue if crab bodygroup is set
 	local spawnType = math.random(1, 3)
 	local dmgType = dmginfo:GetDamageType()

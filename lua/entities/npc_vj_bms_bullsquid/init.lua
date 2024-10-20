@@ -21,9 +21,9 @@ ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let 
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
 
 ENT.HasRangeAttack = true -- Can this NPC range attack?
-ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1 -- Range Attack Animations
+ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1
 ENT.RangeAttackEntityToSpawn = "obj_vj_bms_acidspit" -- Entities that it can spawn when range attacking | If set as a table, it picks a random entity
-ENT.RangeDistance = 2000 -- This is how far away it can shoot
+ENT.RangeDistance = 2000 -- How far can it range attack?
 ENT.RangeToMeleeDistance = 300 -- How close does it have to be until it uses melee?
 ENT.TimeUntilRangeAttackProjectileRelease = 0.6 -- How much time until the projectile code is ran?
 ENT.NextRangeAttackTime = 1.2 -- How much time until it can use a range attack?
@@ -51,14 +51,14 @@ ENT.SoundTbl_Pain = {"vj_bms_bullsquid/pain1.wav","vj_bms_bullsquid/pain2.wav","
 ENT.SoundTbl_Death = {"vj_bms_bullsquid/die1.wav","vj_bms_bullsquid/die2.wav"}
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(45, 45 , 50), Vector(-45, -45, 0))
 	self:SetSkin(1)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_SQUID_MELEE_ATTACK1" then
 		self.MeleeAttackDamage = 40
@@ -88,7 +88,7 @@ local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	if GetConVarNumber("vj_bms_bullsquid_gib") == 0 then return false end -- Because sometimes it crashes!
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorYellow)

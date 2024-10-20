@@ -32,7 +32,7 @@ ENT.SoundTbl_UnFollowPlayer = {"vj_bms_scientistfemale/stopfollowing1.wav","vj_b
 ENT.SoundTbl_OnPlayerSight = {"vj_bms_scientistfemale/sawplayer1.wav","vj_bms_scientistfemale/sawplayer2.wav","vj_bms_scientistfemale/sawplayer3.wav","vj_bms_scientistfemale/sawplayer4.wav","vj_bms_scientistfemale/sawplayer5.wav","vj_bms_scientistfemale/sawplayer6.wav",}
 ENT.SoundTbl_DamageByPlayer = {"vj_bms_scientistfemale/stupidplayer1.wav","vj_bms_scientistfemale/stupidplayer2.wav","vj_bms_scientistfemale/stupidplayer3.wav","vj_bms_scientistfemale/stupidplayer4.wav","vj_bms_scientistfemale/stupidplayer5.wav","vj_bms_scientistfemale/stupidplayer6.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	local randFace = math.random(1, 7)
 	if randFace == 1 then self:SetBodygroup(3, math.random(0, 1)) self:SetSkin(0) end
 	if randFace == 2 then self:SetBodygroup(3, 2) self:SetSkin(1) end
@@ -51,7 +51,7 @@ local colorRed = VJ.Color2Byte(Color(130, 19, 10))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorRed)
@@ -80,7 +80,7 @@ function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 	return true
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDeath_AfterCorpseSpawned(dmginfo, hitgroup, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
 	if self:GetBodygroup(5) == 1 then
 		self:CreateExtraDeathCorpse("prop_physics", "models/humans/props/scientist_syringe.mdl", {Pos=self:LocalToWorld(Vector(0, 12, 0))})
 		corpseEnt:SetBodygroup(5, 0)

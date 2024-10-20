@@ -13,7 +13,7 @@ ENT.EntitiesToNoCollide = {"npc_vj_bms_snark"}
 ENT.VJ_NPC_Class = {"CLASS_SNARK"} -- NPCs with the same class with be allied to each other
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = {} -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = {}
 ENT.MeleeAttackDistance = 20 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 25 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = 0.1 -- This counted in seconds | This calculates the time until it hits something
@@ -21,7 +21,7 @@ ENT.NextAnyAttackTime_Melee = 0.4 -- How much time until it can use any attack a
 ENT.MeleeAttackDamage = 1
 
 ENT.HasLeapAttack = true -- Can this NPC leap attack?
-ENT.AnimTbl_LeapAttack = ACT_GLIDE -- Melee Attack Animations
+ENT.AnimTbl_LeapAttack = ACT_GLIDE
 ENT.LeapDistance = 200 -- The max distance that the NPC can leap from
 ENT.LeapToMeleeDistance = 0 -- How close does it have to be until it uses melee?
 ENT.TimeUntilLeapAttackDamage = 0.4 -- How much time until it runs the leap damage code?
@@ -32,7 +32,7 @@ ENT.LeapAttackDamage = 1
 ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
 
 ENT.IdleAlwaysWander = true -- Should the NPC constantly wander while idling?
-ENT.HasDeathRagdoll = false -- Should the NPC spawn a corpse when it dies?
+ENT.HasDeathCorpse = false -- Should a corpse spawn when it's killed?
 ENT.PushProps = false -- Should it push props when trying to move?
 ENT.FindEnemy_UseSphere = true -- Should the NPC see all around? (360 degrees) | Objects and walls can still block its sight!
 	-- ====== Sound Paths ====== --
@@ -49,7 +49,7 @@ ENT.SoundTbl_Death = {"vj_bms_snark/blast1.wav"}
 ENT.Snark_CanExplode = true
 ENT.Snark_NextJumpWalkT = 0
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(5, 5, 10), Vector(-5, -5, 0))
 	//self:PhysicsInitBox(self:GetModelBounds())
 	//self.MeleeAttackDamage = math.random(3,5)
@@ -59,7 +59,7 @@ function ENT:CustomOnInitialize()
 	if GetConVarNumber("vj_bms_snarkexplode") == 0 then self.Snark_CanExplode = false end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink_AIEnabled()
+function ENT:OnThinkActive()
 	//PrintMessage(HUD_PRINTTALK, self.Snark_EnergyTime, " | CURTIME: " .. CurTime())
 	local ene = self:GetEnemy()
 	if IsValid(ene) && !self.VJ_IsBeingControlled && self:IsOnGround() && self:Visible(ene) && self.LatestEnemyDistance > (self.LeapDistance + 10) && CurTime() > self.Snark_NextJumpWalkT then
@@ -89,8 +89,8 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 --
-function ENT:CustomOnKilled(dmginfo, hitgroup)
-	if self.HasGibDeathParticles then
+function ENT:OnDeath(dmginfo, hitgroup, status)
+	if status == "Finish" && self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorYellow)
