@@ -123,7 +123,6 @@ function ENT:BMSASSASSIN_RESETCLOAK()
 		end
 		self:GetActiveWeapon().WorldModel_Invisible = false
 	end
-	self.DisableMakingSelfEnemyToNPCs = false
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorInv = Color(0, 0, 0, 10)
@@ -140,7 +139,6 @@ function ENT:BMSASSASSIN_DOCLOAK()
 		end
 		self:GetActiveWeapon().WorldModel_Invisible = true
 	end
-	self.DisableMakingSelfEnemyToNPCs = true
 	if self.VJ_IsBeingControlled == false then
 		timer.Simple(math.random(6, 9), function() if IsValid(self) then self:BMSASSASSIN_RESETCLOAK() end end)
 	end
