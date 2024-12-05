@@ -7,6 +7,7 @@ include("shared.lua")
 -----------------------------------------------*/
 ENT.Model = "models/VJ_BLACKMESA/snark.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
 ENT.StartHealth = 10
+ENT.SightAngle = 360
 ENT.HullType = HULL_TINY
 ENT.EntitiesToNoCollide = {"npc_vj_bms_snark"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -34,7 +35,6 @@ ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
 ENT.IdleAlwaysWander = true -- Should the NPC constantly wander while idling?
 ENT.HasDeathCorpse = false -- Should a corpse spawn when it's killed?
 ENT.PushProps = false -- Should it push props when trying to move?
-ENT.FindEnemy_UseSphere = true -- Should the NPC see all around? (360 degrees) | Objects and walls can still block its sight!
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = {"vj_bms_snark/hunt1.wav","vj_bms_snark/hunt2.wav","vj_bms_snark/hunt3.wav","vj_bms_snark/hunt4.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_snark/deploy1.wav","vj_bms_snark/deploy2.wav","vj_bms_snark/deploy3.wav"}
