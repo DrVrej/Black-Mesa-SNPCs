@@ -72,7 +72,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnAlert(ent)
 	if self.VJ_IsBeingControlled then return end
-	self:VJ_ACT_PLAYACTIVITY(animAlert, true, 1, true)
+	self:PlayAnim(animAlert, true, 1, true)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnMeleeAttack_BeforeChecks()

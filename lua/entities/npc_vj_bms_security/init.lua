@@ -50,7 +50,7 @@ function ENT:Security_WeaponHolster(Type)
 	if !IsValid(curWep) or curWep:GetClass() != "weapon_vj_glock17" then self:SetBodygroup(4, 2) return end
 	if Type == 0 then
 		if self:GetWeaponState() != VJ.NPC_WEP_STATE_HOLSTERED then
-			self:VJ_ACT_PLAYACTIVITY("drawpistol", true, 0.4, false)
+			self:PlayAnim("drawpistol", true, 0.4, false)
 		end
 		VJ.EmitSound(self, "vj_bms_securityguard/pistol_holster.wav", 70)
 		self:SetWeaponState(VJ.NPC_WEP_STATE_HOLSTERED)
@@ -61,7 +61,7 @@ function ENT:Security_WeaponHolster(Type)
 			end
 		end)
 	elseif Type == 1 then
-		self:VJ_ACT_PLAYACTIVITY("drawpistol", true, false, true)
+		self:PlayAnim("drawpistol", true, false, true)
 		VJ.EmitSound(self, "vj_bms_securityguard/pistol_draw.wav", 70)
 		self:SetWeaponState()
 		timer.Simple(0.4, function()

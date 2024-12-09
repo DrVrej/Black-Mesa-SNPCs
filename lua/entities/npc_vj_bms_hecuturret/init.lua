@@ -108,7 +108,7 @@ function ENT:OnThinkActive()
 			self:SetSkin(0)
 			if self.HECUTurret_StandDown == false then
 				self.HECUTurret_StandDown = true
-				self:VJ_ACT_PLAYACTIVITY({"retract"},true,1)
+				self:PlayAnim({"retract"},true,1)
 				VJ.EmitSound(self, "vj_bms_groundturret/retract.wav", 65, math.random(100, 110))
 			end
 		end
@@ -124,7 +124,7 @@ function ENT:CustomAttackCheck_RangeAttack()
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnAlert(ent)
-	self:VJ_ACT_PLAYACTIVITY("deploy", true, 0.7)
+	self:PlayAnim("deploy", true, 0.7)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomRangeAttackCode()

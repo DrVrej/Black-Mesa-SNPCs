@@ -63,7 +63,7 @@ function ENT:OnThinkActive()
 	//PrintMessage(HUD_PRINTTALK, self.Snark_EnergyTime, " | CURTIME: " .. CurTime())
 	local ene = self:GetEnemy()
 	if IsValid(ene) && !self.VJ_IsBeingControlled && self:IsOnGround() && self:Visible(ene) && self.LatestEnemyDistance > (self.LeapDistance + 10) && CurTime() > self.Snark_NextJumpWalkT then
-		self:VJ_ACT_PLAYACTIVITY(ACT_GLIDE, false, 0.7, true)
+		self:PlayAnim(ACT_GLIDE, false, 0.7, true)
 		self:SetGroundEntity(NULL)
 		self:SetLocalVelocity((ene:GetPos() - self:GetPos()):GetNormal()*500 + self:GetUp()*math.Rand(180, 220) + self:GetForward()*math.Rand(30, 50))
 		self.Snark_NextJumpWalkT = CurTime() + math.Rand(0.4, 0.5)

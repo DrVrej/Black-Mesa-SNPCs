@@ -167,7 +167,7 @@ function ENT:OnThinkActive()
 	end
 
 	if IsValid(self:GetEnemy()) && self.DoingWeaponAttack_Standing == true && self.VJ_IsBeingControlled == false && CurTime() > self.Assassin_NextJumpT && self:GetPos():Distance(self:GetEnemy():GetPos()) < 1400 then
-		self:VJ_ACT_PLAYACTIVITY({ACT_LEAP, ACT_JUMP}, true, 1, false)
+		self:PlayAnim({ACT_LEAP, ACT_JUMP}, true, 1, false)
 		self.Assassin_NextJumpT = CurTime() + math.Rand(3.5, 6)
 	end
 end
