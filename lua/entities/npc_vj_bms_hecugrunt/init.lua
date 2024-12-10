@@ -71,7 +71,7 @@ function ENT:Init()
 		local randHat = math.random(1, 6)
 		if randHat == 1 then -- Medic
 			self:SetBodygroup(6, 1)
-			self.IsMedicSNPC = true
+			self.IsMedic = true
 		elseif randHat == 2 then -- Night vision gas mask
 			self:SetBodygroup(4, 1)
 			self.HECU_GasMask = true
