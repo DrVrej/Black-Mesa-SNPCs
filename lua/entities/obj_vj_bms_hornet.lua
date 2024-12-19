@@ -24,15 +24,12 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 if !SERVER then return end
 
-ENT.Model = "models/weapons/w_hornet.mdl" -- The models it should spawn with | Picks a random one from the table
-ENT.MoveCollideType = MOVECOLLIDE_FLY_BOUNCE
-ENT.RemoveOnHit = false -- Should it remove itself when it touches something? | It will run the hit sound, place a decal, etc.
-ENT.DoesDirectDamage = true -- Should it do a direct damage when it hits something?
-ENT.DirectDamage = 3.5 -- How much damage should it do when it hits something
-ENT.DirectDamageType = DMG_SLASH -- Damage type
-ENT.CollideCodeWithoutRemoving = true -- If RemoveOnHit is set to false, you can still make the projectile deal damage, place a decal, etc.
-ENT.DecalTbl_DeathDecals = {"YellowBlood"}
-ENT.DecalTbl_OnCollideDecals = {"YellowBlood"} -- Decals that paint when the projectile collides with something | It picks a random one from this table
+ENT.Model = "models/weapons/w_hornet.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.DoesDirectDamage = true -- Should it deal direct damage when it collides with something?
+ENT.DirectDamage = 3.5
+ENT.DirectDamageType = DMG_SLASH
+ENT.CollisionBehavior = VJ.PROJ_COLLISION_PERSIST
+ENT.CollisionDecals = "YellowBlood"
 ENT.SoundTbl_Startup = "vj_bms_hornet/single.wav"
 ENT.SoundTbl_Idle = "vj_bms_hornet/buzz.wav"
 ENT.SoundTbl_OnCollide = "vj_bms_hornet/bug_impact.wav"
@@ -41,14 +38,6 @@ ENT.IdleSoundPitch = VJ.SET(100, 100)
 
 -- Custom
 ENT.MyEnemy = NULL
----------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomPhysicsObjectOnInitialize(phys)
-	phys:Wake()
-	phys:SetMass(1)
-	phys:SetBuoyancyRatio(0)
-	phys:EnableDrag(false)
-	phys:EnableGravity(false)
-end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	timer.Simple(5,function() if IsValid(self) then self:Remove() end end)
@@ -91,25 +80,23 @@ function ENT:OnThink()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnDoDamage(data,phys,hitent)
-	if data.HitEntity:IsNPC() or data.HitEntity:IsPlayer() then
-		self:SetDeathVariablesTrue(data,phys)
-		self:Remove()
-	end
-end
----------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnPhysicsCollide(data, phys)
+function ENT:OnCollision(data, phys)
 	local lastvel = math.max(data.OurOldVelocity:Length(), data.Speed) -- Get the last velocity and speed
 	local newvel = phys:GetVelocity():GetNormal()
 	lastvel = math.max(newvel:Length(), lastvel)
 	local setvel = newvel * lastvel * 0.3
 	phys:SetVelocity(setvel)
 	self:SetAngles(self:GetVelocity():GetNormal():Angle())
+	
+	-- Remove if it's a living being
+	if data.HitEntity.VJTag_IsLiving then
+		self.CollisionBehavior = VJ.PROJ_COLLISION_REMOVE
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
 --
-function ENT:DeathEffects(data,phys)
+function ENT:OnDestroy(data,phys)
 	local effectData = EffectData()
 	effectData:SetOrigin(data.HitPos)
 	effectData:SetScale(0.6)

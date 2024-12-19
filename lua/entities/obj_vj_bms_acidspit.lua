@@ -24,22 +24,16 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 if !SERVER then return end
 
-ENT.Model = {"models/spitball_small.mdl", "models/spitball_medium.mdl"} -- The models it should spawn with | Picks a random one from the table
-ENT.DoesRadiusDamage = true -- Should it do a blast damage when it hits something?
-ENT.RadiusDamageRadius = 70 -- How far the damage go? The farther away it's from its enemy, the less damage it will do | Counted in world units
-ENT.RadiusDamage = 3 -- How much damage should it deal? Remember this is a radius damage, therefore it will do less damage the farther away the entity is from its enemy
-ENT.RadiusDamageUseRealisticRadius = true -- Should the damage decrease the farther away the enemy is from the position that the projectile hit?
-ENT.RadiusDamageType = DMG_ACID -- Damage type
-ENT.DecalTbl_DeathDecals = {"VJ_AcidSlime1"}
+ENT.Model = {"models/spitball_small.mdl", "models/spitball_medium.mdl"} -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.ProjectileType = VJ.PROJ_TYPE_GRAVITY
+ENT.DoesRadiusDamage = true -- Should it deal radius damage when it collides with something?
+ENT.RadiusDamageRadius = 70
+ENT.RadiusDamage = 3
+ENT.RadiusDamageUseRealisticRadius = true -- Should the damage decrease the farther away the hit entity is from the radius origin?
+ENT.RadiusDamageType = DMG_ACID
+ENT.CollisionDecals = "VJ_AcidSlime1"
 ENT.SoundTbl_Idle = "vj_base/ambience/acid_idle.wav"
 ENT.SoundTbl_OnCollide = "vj_base/ambience/acid_splat.wav"
----------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomPhysicsObjectOnInitialize(phys)
-	phys:Wake()
-	//phys:SetMass(1)
-	phys:SetBuoyancyRatio(0)
-	phys:EnableDrag(false)
-end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	ParticleEffectAttach("antlion_spit_trail", PATTACH_ABSORIGIN_FOLLOW, self, 0)
@@ -51,10 +45,10 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
 --
-function ENT:DeathEffects(data,phys)
+function ENT:OnDestroy(data,phys)
 	local effectData = EffectData()
 	effectData:SetOrigin(data.HitPos)
-	effectData:SetScale( 1 )
+	effectData:SetScale(1)
 	util.Effect("StriderBlood", effectData)
 	util.Effect("StriderBlood", effectData)
 	util.Effect("StriderBlood", effectData)
