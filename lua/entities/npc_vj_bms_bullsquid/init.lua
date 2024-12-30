@@ -10,7 +10,7 @@ ENT.StartHealth = 120
 ENT.HullType = HULL_WIDE_SHORT
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_XEN"} -- NPCs with the same class with be allied to each other
-ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.Immune_AcidPoisonRadiation = true -- Immune to Acid, Poison and Radiation
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
@@ -37,8 +37,8 @@ ENT.NoChaseAfterCertainRange = true -- Should the NPC stop chasing when the enem
 ENT.NoChaseAfterCertainRange_FarDistance = "UseRangeDistance" -- How far until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
 ENT.NoChaseAfterCertainRange_CloseDistance = "UseRangeDistance" -- How near until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
 ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior | "OnlyRange" = Only does it if it's able to range attack
-ENT.FootStepTimeRun = 0.25 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
+ENT.FootStepTimeRun = 0.25 -- Delay between footstep sounds while it is running | false = Disable while running
+ENT.FootStepTimeWalk = 0.6 -- Delay between footstep sounds while it is walking | false = Disable while walking
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav","vj_bms_bullsquid/step2.wav"}

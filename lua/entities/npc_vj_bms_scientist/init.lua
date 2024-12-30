@@ -11,14 +11,14 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_BLACK_MESA_PERSONNEL", "CLASS_PLAYER_ALLY"} -- NPCs with the same class with be allied to each other
 ENT.Behavior = VJ_BEHAVIOR_PASSIVE -- Doesn't attack anything
-ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_RED -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.FriendsWithAllPlayerAllies = true -- Should this NPC be friends with other player allies?
 ENT.BecomeEnemyToPlayer = true -- Should the friendly SNPC become enemy towards the player if it's damaged by a player?
 ENT.DropDeathLoot = false -- Should it drop loot on death?
 ENT.HasOnPlayerSight = true -- Should do something when it sees the enemy? Example: Play a sound
 ENT.OnPlayerSightDispositionLevel = 1 -- 0 = Run it every time | 1 = Run it only when friendly to player | 2 = Run it only when enemy to player
-ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
+ENT.FootStepTimeRun = 0.4 -- Delay between footstep sounds while it is running | false = Disable while running
+ENT.FootStepTimeWalk = 0.5 -- Delay between footstep sounds while it is walking | false = Disable while walking
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"npc/footsteps/hardboot_generic1.wav","npc/footsteps/hardboot_generic2.wav","npc/footsteps/hardboot_generic3.wav","npc/footsteps/hardboot_generic4.wav","npc/footsteps/hardboot_generic5.wav","npc/footsteps/hardboot_generic6.wav",}
 ENT.SoundTbl_Idle = {"vj_bms_scientistmale/Idle1.wav","vj_bms_scientistmale/Idle2.wav","vj_bms_scientistmale/Idle3.wav","vj_bms_scientistmale/Idle4.wav","vj_bms_scientistmale/Idle5.wav","vj_bms_scientistmale/Idle6.wav","vj_bms_scientistmale/Idle7.wav","vj_bms_scientistmale/Idle8.wav","vj_bms_scientistmale/Idle9.wav","vj_bms_scientistmale/Idle10.wav","vj_bms_scientistmale/Idle11.wav","vj_bms_scientistmale/Idle12.wav"}

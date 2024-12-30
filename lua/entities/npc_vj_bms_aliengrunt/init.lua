@@ -10,7 +10,7 @@ ENT.StartHealth = 200
 ENT.HullType = HULL_MEDIUM_TALL
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_XEN"} -- NPCs with the same class with be allied to each other
-ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
@@ -24,8 +24,8 @@ ENT.TimeUntilRangeAttackProjectileRelease = 0.2 -- How much time until the proje
 ENT.NextRangeAttackTime = 3 -- How much time until it can use a range attack?
 ENT.RangeAttackReps = 8 -- How many times does it run the projectile code?
 
-ENT.FootStepTimeRun = 0.5 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 1 -- Next foot step sound when it is walking
+ENT.FootStepTimeRun = 0.5 -- Delay between footstep sounds while it is running | false = Disable while running
+ENT.FootStepTimeWalk = 1 -- Delay between footstep sounds while it is walking | false = Disable while walking
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav","vJ_bms_aliengrunt/step2.wav","vJ_bms_aliengrunt/step3.wav","vJ_bms_aliengrunt/step4.wav","vJ_bms_aliengrunt/step5.wav","vJ_bms_aliengrunt/step6.wav"}

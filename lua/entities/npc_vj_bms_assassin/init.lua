@@ -10,7 +10,7 @@ ENT.StartHealth = 50
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_BLACKOPS"} -- NPCs with the same class with be allied to each other
-ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_RED -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
@@ -21,15 +21,15 @@ ENT.TimeUntilMeleeAttackDamage = 0.3 -- This counted in seconds | This calculate
 ENT.NextAnyAttackTime_Melee = 0.5 -- How much time until it can use any attack again? | Counted in Seconds
 
 ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
-ENT.CanCrouchOnWeaponAttack = false -- Can it crouch while shooting?
+ENT.Weapon_CanCrouchAttack = false -- Can it crouch while shooting?
 ENT.Weapon_NoSpawnMenu = true -- If set to true, the NPC weapon setting in the spawnmenu will not be applied for this SNPC
 ENT.Weapon_Accuracy = 0.9 -- NPC's accuracy with weapons, affects bullet spread! | x < 1 = Better accuracy | x > 1 = Worse accuracy
 ENT.CallForBackUpOnDamage = false -- Should the SNPC call for help when damaged? (Only happens if the SNPC hasn't seen a enemy)
 ENT.BringFriendsOnDeath = false -- Should the NPC's allies come to its position while it's dying?
 ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true -- Should it only move away and not hide behind cover?
 ENT.MoveOrHideOnDamageByEnemy_NextTime = VJ.SET(2, 2.5) -- How long until it can do this behavior again? (hide behind cover or move away)
-ENT.FootStepTimeRun = 0.3 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.3 -- Next foot step sound when it is walking
+ENT.FootStepTimeRun = 0.3 -- Delay between footstep sounds while it is running | false = Disable while running
+ENT.FootStepTimeWalk = 0.3 -- Delay between footstep sounds while it is walking | false = Disable while walking
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_bms_assassin/step1.wav","vj_bms_assassin/step2.wav"}
 ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_assassin/kick1.wav","vj_bms_assassin/kick2.wav","vj_bms_assassin/kick3.wav","vj_bms_assassin/kick4.wav","vj_bms_assassin/kick5.wav","vj_bms_assassin/kick6.wav"}

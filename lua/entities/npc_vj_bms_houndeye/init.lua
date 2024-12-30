@@ -10,7 +10,7 @@ ENT.StartHealth = 80
 ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_XEN"} -- NPCs with the same class with be allied to each other
-ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.Immune_Sonic = true -- Immune to sonic damage
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
@@ -29,8 +29,8 @@ ENT.AnimTbl_Death = ACT_DIESIMPLE
 ENT.DeathAnimationChance = 2 -- Put 1 if you want it to play the animation all the time
 ENT.PushProps = false -- Should it push props when trying to move?
 ENT.AttackProps = false -- Should it attack props when trying to move?
-ENT.FootStepTimeRun = 0.3 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 1 -- Next foot step sound when it is walking
+ENT.FootStepTimeRun = 0.3 -- Delay between footstep sounds while it is running | false = Disable while running
+ENT.FootStepTimeWalk = 1 -- Delay between footstep sounds while it is walking | false = Disable while walking
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 2 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
 ENT.FlinchChance = 1 -- Chance of it flinching from 1 to x | 1 will make it always flinch
