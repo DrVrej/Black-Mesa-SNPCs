@@ -200,7 +200,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorRed = VJ.Color2Byte(Color(130, 19, 10))
 --
-function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
+function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 	self.HasDeathSounds = false
 	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()

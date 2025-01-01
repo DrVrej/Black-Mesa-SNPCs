@@ -85,7 +85,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 --
-function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
+function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 	if GetConVarNumber("vj_bms_bullsquid_gib") == 0 then return false end -- Because sometimes it crashes!
 	self.HasDeathSounds = false
 	if self.HasGibOnDeathEffects then
