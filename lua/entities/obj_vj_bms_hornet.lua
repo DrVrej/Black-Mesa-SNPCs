@@ -103,5 +103,5 @@ function ENT:OnDestroy(data,phys)
 	effectData:SetOrigin(data.HitPos)
 	effectData:SetScale(0.6)
 	util.Effect("StriderBlood", effectData)
-	ParticleEffect("antlion_gib_02_floaters", data.HitPos, defAng)
+	ParticleEffect("vj_acid_impact3_floaters", data.HitPos, defAng)
 end

@@ -62,7 +62,7 @@ function ENT:OnTakeDamage(dmginfo,data)
 		effectData:SetScale(0.6)
 		util.Effect("StriderBlood", effectData)
 		util.Effect("StriderBlood", effectData)
-		ParticleEffect("antlion_spit", myPos, defAng)
+		ParticleEffect("vj_acid_impact1", myPos, defAng)
 		
 		for _ = 1, 8 do
 			local ent = ents.Create("npc_vj_bms_snark")

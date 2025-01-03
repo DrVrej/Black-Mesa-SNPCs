@@ -36,11 +36,11 @@ ENT.SoundTbl_Idle = "vj_base/ambience/acid_idle.wav"
 ENT.SoundTbl_OnCollide = "vj_base/ambience/acid_splat.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
-	ParticleEffectAttach("antlion_spit_trail", PATTACH_ABSORIGIN_FOLLOW, self, 0)
+	ParticleEffectAttach("vj_acid_idle", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnThink()
-	ParticleEffectAttach("antlion_spit", PATTACH_ABSORIGIN_FOLLOW, self, 0)
+	ParticleEffectAttach("vj_acid_impact1", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
@@ -52,6 +52,6 @@ function ENT:OnDestroy(data,phys)
 	util.Effect("StriderBlood", effectData)
 	util.Effect("StriderBlood", effectData)
 	util.Effect("StriderBlood", effectData)
-	ParticleEffect("antlion_gib_02_floaters", data.HitPos, defAng)
-	ParticleEffect("antlion_gib_01_juice", data.HitPos, defAng)
+	ParticleEffect("vj_acid_impact3_floaters", data.HitPos, defAng)
+	ParticleEffect("vj_acid_impact2_juice", data.HitPos, defAng)
 end
