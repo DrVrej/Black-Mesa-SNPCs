@@ -7,7 +7,7 @@ ENT.Purpose 		= "Spawn it and fight with it!"
 ENT.Instructions 	= "Click on the spawnicon to spawn it."
 ENT.Category		= "Hazardous Environment Combat Unit"
 
-ENT.VJTag_ID_Turret = true
+ENT.VJ_ID_Turret = true
 
 if (CLIENT) then
 	local matLaser = Material("sprites/rollermine_shock")
