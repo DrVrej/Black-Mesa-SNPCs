@@ -24,6 +24,7 @@ ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
 ENT.Weapon_CanCrouchAttack = false -- Can it crouch while shooting?
 ENT.Weapon_NoSpawnMenu = true -- If set to true, the NPC weapon setting in the spawnmenu will not be applied for this SNPC
 ENT.Weapon_Accuracy = 0.9 -- NPC's accuracy with weapons, affects bullet spread! | x < 1 = Better accuracy | x > 1 = Worse accuracy
+
 ENT.CallForBackUpOnDamage = false -- Should the SNPC call for help when damaged? (Only happens if the SNPC hasn't seen a enemy)
 ENT.BringFriendsOnDeath = false -- Should the NPC's allies come to its position while it's dying?
 ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true -- Should it only move away and not hide behind cover?
@@ -215,13 +216,13 @@ function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 		util.Effect("bloodspray", effectData)
 	end
 	
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/brain_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 60)), Ang=self:GetAngles()+Angle(0, -90, 0)})
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/eye_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 55)), Ang=self:GetAngles()+Angle(0, -90, 0), Vel=self:GetRight()*math.Rand(150, 250)+self:GetForward()*math.Rand(-200, 200)})
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/eye_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 3, 55)), Ang=self:GetAngles()+Angle(0, -90, 0), Vel=self:GetRight()*math.Rand(-150, -250)+self:GetForward()*math.Rand(-200, 200)})
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/heart_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 40))})
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/lung_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 41))})
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/lung_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 42))})
-	self:CreateGibEntity("obj_vj_gib", "models/gibs/humans/liver_gib.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 35))})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/brain.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 60)), Ang=self:GetAngles()+Angle(0, -90, 0)})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/eye.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 55)), Ang=self:GetAngles()+Angle(0, -90, 0), Vel=self:GetRight()*math.Rand(150, 250)+self:GetForward()*math.Rand(-200, 200)})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/eye.mdl", {Pos=self:LocalToWorld(Vector(0, 3, 55)), Ang=self:GetAngles()+Angle(0, -90, 0), Vel=self:GetRight()*math.Rand(-150, -250)+self:GetForward()*math.Rand(-200, 200)})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/heart.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 40))})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/lung.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 41))})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/lung.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 42))})
+	self:CreateGibEntity("obj_vj_gib", "models/vj_base/gibs/human/liver.mdl", {Pos=self:LocalToWorld(Vector(0, 0, 35))})
 	self:CreateGibEntity("obj_vj_gib", "UseHuman_Small", {Pos=self:LocalToWorld(Vector(0, 0, 30))})
 	self:CreateGibEntity("obj_vj_gib", "UseHuman_Small", {Pos=self:LocalToWorld(Vector(0, 0, 31))})
 	self:CreateGibEntity("obj_vj_gib", "UseHuman_Small", {Pos=self:LocalToWorld(Vector(0, 0, 32))})
