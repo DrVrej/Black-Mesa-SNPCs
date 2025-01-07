@@ -47,7 +47,7 @@ function ENT:Init()
 	self:CapabilitiesAdd(bit.bor(CAP_MOVE_JUMP))
 	//self:SetMaterial("models/effects/vol_ight001_")
 
-	if GetConVarNumber("vj_npc_noidleparticle") == 0 then
+	if GetConVarNumber("vj_npc_reduce_vfx") == 0 then
 		local eyeglow1 = ents.Create("env_sprite")
 		eyeglow1:SetKeyValue("model", "vj_base/sprites/vj_glow1.vmt")
 		eyeglow1:SetKeyValue("scale", "0.04")
