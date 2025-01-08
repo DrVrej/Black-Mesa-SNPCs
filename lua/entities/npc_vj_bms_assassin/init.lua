@@ -49,7 +49,7 @@ function ENT:Init()
 
 	if GetConVarNumber("vj_npc_reduce_vfx") == 0 then
 		local eyeglow1 = ents.Create("env_sprite")
-		eyeglow1:SetKeyValue("model", "vj_base/sprites/vj_glow1.vmt")
+		eyeglow1:SetKeyValue("model", "vj_base/sprites/glow.vmt")
 		eyeglow1:SetKeyValue("scale", "0.04")
 		eyeglow1:SetKeyValue("rendermode", "5")
 		eyeglow1:SetKeyValue("rendercolor", "255 0 0")
@@ -61,7 +61,7 @@ function ENT:Init()
 		self:DeleteOnRemove(eyeglow1)
 		
 		local eyeglow2 = ents.Create("env_sprite")
-		eyeglow2:SetKeyValue("model", "vj_base/sprites/vj_glow1.vmt")
+		eyeglow2:SetKeyValue("model", "vj_base/sprites/glow.vmt")
 		eyeglow2:SetKeyValue("scale", "0.04")
 		eyeglow2:SetKeyValue("rendermode", "5")
 		eyeglow2:SetKeyValue("rendercolor", "255 0 0")
@@ -72,8 +72,8 @@ function ENT:Init()
 		eyeglow2:Activate()
 		self:DeleteOnRemove(eyeglow2)
 		
-		util.SpriteTrail(self, 6, Color(200, 0, 0), true, 6, 6, 0.1, 0.04167, "VJ_Base/sprites/vj_trial1.vmt")
-		util.SpriteTrail(self, 7, Color(200, 0, 0), true, 6, 6, 0.1, 0.04167, "VJ_Base/sprites/vj_trial1.vmt")
+		util.SpriteTrail(self, 6, Color(200, 0, 0), true, 6, 6, 0.1, 0.04167, "VJ_Base/sprites/trail.vmt")
+		util.SpriteTrail(self, 7, Color(200, 0, 0), true, 6, 6, 0.1, 0.04167, "VJ_Base/sprites/trail.vmt")
 	end
 	
 	if self.DisableWeapons == false then

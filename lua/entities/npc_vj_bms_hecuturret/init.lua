@@ -69,7 +69,7 @@ function ENT:OnThinkActive()
 	if IsValid(ene) or (self:GetNPCState() == NPC_STATE_ALERT or self:GetNPCState() == NPC_STATE_COMBAT) then
 		self.HECUTurret_StandDown = false
 		local glow = ents.Create("env_sprite")
-		glow:SetKeyValue("model","vj_base/sprites/vj_glow1.vmt")
+		glow:SetKeyValue("model","vj_base/sprites/glow.vmt")
 		glow:SetKeyValue("scale","0.04")
 		glow:SetKeyValue("rendermode","5")
 		glow:SetKeyValue("rendercolor","255 0 0")
@@ -83,7 +83,7 @@ function ENT:OnThinkActive()
 		
 		if CurTime() > self.HECUTurret_NextAlarmT then
 			glow = ents.Create("env_sprite")
-			glow:SetKeyValue("model","vj_base/sprites/vj_glow1.vmt")
+			glow:SetKeyValue("model","vj_base/sprites/glow.vmt")
 			glow:SetKeyValue("scale","0.1")
 			glow:SetKeyValue("rendermode","5")
 			glow:SetKeyValue("rendercolor","255 0 0")
