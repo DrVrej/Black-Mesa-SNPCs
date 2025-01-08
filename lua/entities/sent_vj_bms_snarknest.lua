@@ -19,11 +19,7 @@ ENT.AutomaticFrameAdvance = true
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 if CLIENT then
-	language.Add("sent_vj_bms_snarknest", "Snark Nest")
-	killicon.Add("sent_vj_bms_snarknest", "HUD/killicons/default", Color(255, 80, 0, 255))
-
-	language.Add("#sent_vj_bms_snarknest", "Snark Nest")
-	killicon.Add("#sent_vj_bms_snarknest", "HUD/killicons/default", Color(255, 80, 0, 255))
+	VJ.AddKillIcon("sent_vj_bms_snarknest", ENT.PrintName)
 
 	function ENT:Draw()
 		self:DrawModel()
