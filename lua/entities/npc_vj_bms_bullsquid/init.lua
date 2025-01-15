@@ -10,7 +10,7 @@ ENT.StartHealth = 120
 ENT.HullType = HULL_WIDE_SHORT
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_XEN"} -- NPCs with the same class with be allied to each other
-ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 ENT.Immune_AcidPoisonRadiation = true -- Immune to Acid, Poison and Radiation
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
