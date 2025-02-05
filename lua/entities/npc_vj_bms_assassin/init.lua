@@ -78,29 +78,33 @@ function ENT:Init()
 	
 	if self.DisableWeapons == false then
 		self:Give("weapon_vj_glock17")
-		self:GetActiveWeapon().NPC_NextPrimaryFire = 0.15
-		self:GetActiveWeapon().Primary.Sound = "vj_bms_assassin/silentpistol.wav"
-		self:GetActiveWeapon().Primary.HasDistantSound = false
-		self:GetActiveWeapon().Primary.Damage = 10
-		self:GetActiveWeapon().PrimaryEffects_MuzzleFlash = false
-		//self:GetActiveWeapon():SetRenderMode(RENDERMODE_TRANSALPHA)
-		if self:GetActiveWeapon() != NULL then
-			self.ExtraGunModel1 = ents.Create("prop_physics")
-			self.ExtraGunModel1:SetModel("models/vj_weapons/w_glock_lh.mdl")
-			self.ExtraGunModel1:SetLocalPos(self:GetPos())
-			//self.ExtraGunModel1:SetPos(self:GetPos())
-			self.ExtraGunModel1:SetOwner(self)
-			self.ExtraGunModel1:SetParent(self)
-			//self.ExtraGunModel1:SetLocalAngles(Angle(-120, 0, 90))
-			//self.ExtraGunModel1:Fire("SetParentAttachmentMaintainOffset", "anim_attachment_LH")
-			self.ExtraGunModel1:Fire("SetParentAttachment", "anim_attachment_LH")
-			self.ExtraGunModel1:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
-			self.ExtraGunModel1:Spawn()
-			self.ExtraGunModel1:Activate()
-			self.ExtraGunModel1:SetSolid(SOLID_NONE)
-			self.ExtraGunModel1:AddEffects(EF_BONEMERGE)
-			//self.ExtraGunModel1:SetMaterial("models/effects/vol_light001.vmt")
-			self.ExtraGunModel1:SetRenderMode(RENDERMODE_TRANSALPHA)
+		local activeWep = self:GetActiveWeapon()
+		if IsValid(activeWep) then
+			activeWep.NPC_NextPrimaryFire = 0.15
+			activeWep.Primary.Sound = "vj_bms_assassin/silentpistol.wav"
+			activeWep.Primary.HasDistantSound = false
+			activeWep.Primary.Damage = 10
+			activeWep.Primary.ClipSize = activeWep.Primary.ClipSize * 2
+			activeWep.PrimaryEffects_MuzzleFlash = false
+			activeWep:SetClip1(activeWep.Primary.ClipSize)
+			
+			local secondGun = ents.Create("prop_physics")
+			secondGun:SetModel("models/vj_weapons/w_glock_lh.mdl")
+			secondGun:SetLocalPos(self:GetPos())
+			//secondGun:SetPos(self:GetPos())
+			secondGun:SetOwner(self)
+			secondGun:SetParent(self)
+			//secondGun:SetLocalAngles(Angle(-120, 0, 90))
+			//secondGun:Fire("SetParentAttachmentMaintainOffset", "anim_attachment_LH")
+			secondGun:Fire("SetParentAttachment", "anim_attachment_LH")
+			secondGun:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
+			secondGun:Spawn()
+			secondGun:Activate()
+			secondGun:SetSolid(SOLID_NONE)
+			secondGun:AddEffects(EF_BONEMERGE)
+			//secondGun:SetMaterial("models/effects/vol_light001.vmt")
+			secondGun:SetRenderMode(RENDERMODE_TRANSALPHA)
+			self.SecondGun = secondGun
 		end
 	end
 	timer.Simple(0.1, function() if IsValid(self) then self:SetRenderMode(RENDERMODE_TRANSALPHA) end end)
@@ -118,9 +122,9 @@ function ENT:BMSASSASSIN_RESETCLOAK()
 	self:DrawShadow(true)
 	self:RemoveFlags(FL_NOTARGET)
 	if IsValid(self:GetActiveWeapon()) then
-		if IsValid(self.ExtraGunModel1) then
-			self.ExtraGunModel1:SetColor(colorVis)
-			self.ExtraGunModel1:DrawShadow(true)
+		if IsValid(self.SecondGun) then
+			self.SecondGun:SetColor(colorVis)
+			self.SecondGun:DrawShadow(true)
 		end
 		self:GetActiveWeapon().WorldModel_Invisible = false
 	end
@@ -134,9 +138,9 @@ function ENT:BMSASSASSIN_DOCLOAK()
 	self:SetColor(colorInv)
 	self:DrawShadow(false)
 	if IsValid(self:GetActiveWeapon()) then
-		if IsValid(self.ExtraGunModel1) then
-			self.ExtraGunModel1:SetColor(colorInv)
-			self.ExtraGunModel1:DrawShadow(false)
+		if IsValid(self.SecondGun) then
+			self.SecondGun:SetColor(colorInv)
+			self.SecondGun:DrawShadow(false)
 		end
 		self:GetActiveWeapon().WorldModel_Invisible = true
 	end
@@ -157,19 +161,26 @@ function ENT:OnThinkActive()
 			self:BMSASSASSIN_RESETCLOAK()
 		end
 	end
-	if GetConVarNumber("vj_bms_blackopsassassin_cloak") == 1 && self.VJ_IsBeingControlled == false then
-		if IsValid(self:GetEnemy()) then
-			if CurTime() > self.Assassin_NextCloakT then
-				self:BMSASSASSIN_DOCLOAK()
+	if !self.VJ_IsBeingControlled then
+		if GetConVarNumber("vj_bms_blackopsassassin_cloak") == 1 then
+			if IsValid(self:GetEnemy()) then
+				if CurTime() > self.Assassin_NextCloakT then
+					self:BMSASSASSIN_DOCLOAK()
+				end
+			elseif self:GetNPCState() != NPC_STATE_ALERT && self:GetNPCState() != NPC_STATE_COMBAT then
+				if self.Assassin_Cloaking == true then self:BMSASSASSIN_RESETCLOAK() end
 			end
-		elseif self:GetNPCState() != NPC_STATE_ALERT && self:GetNPCState() != NPC_STATE_COMBAT then
-			if self.Assassin_Cloaking == true then self:BMSASSASSIN_RESETCLOAK() end
 		end
-	end
 
-	if IsValid(self:GetEnemy()) && self.DoingWeaponAttack_Standing == true && self.VJ_IsBeingControlled == false && CurTime() > self.Assassin_NextJumpT && self:GetPos():Distance(self:GetEnemy():GetPos()) < 1400 then
-		self:PlayAnim({ACT_LEAP, ACT_JUMP}, true, 1, false)
-		self.Assassin_NextJumpT = CurTime() + math.Rand(3.5, 6)
+		if IsValid(self:GetEnemy()) && self.DoingWeaponAttack_Standing && CurTime() > self.Assassin_NextJumpT && self.LatestEnemyDistance < 1400 then
+			local trace = self:TraceDirections("Quick", 150, true, true, 4, false, true, false, false)
+			local anims = {}
+			if trace.Forward then anims[#anims + 1] = "vjseq_flip_front" end
+			if trace.Left then anims[#anims + 1] = "vjseq_flip_l" end
+			if trace.Right then anims[#anims + 1] = "vjseq_flip_r" end
+			self:PlayAnim(anims, true, 1, false)
+			self.Assassin_NextJumpT = CurTime() + math.Rand(3.5, 6)
+		end
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
