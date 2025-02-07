@@ -173,7 +173,7 @@ function ENT:OnThinkActive()
 		end
 
 		if IsValid(self:GetEnemy()) && self.DoingWeaponAttack_Standing && CurTime() > self.Assassin_NextJumpT && self.LatestEnemyDistance < 1400 then
-			local trace = self:TraceDirections("Quick", 150, true, true, 4, false, true, false, false)
+			local trace = VJ.TraceDirections(self, "Quick", 150, true, true, 4, false, true, false, false)
 			local anims = {}
 			if trace.Forward then anims[#anims + 1] = "vjseq_flip_front" end
 			if trace.Left then anims[#anims + 1] = "vjseq_flip_l" end

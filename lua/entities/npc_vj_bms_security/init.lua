@@ -49,11 +49,11 @@ function ENT:Security_WeaponHolster(Type)
 	local curWep = self:GetActiveWeapon()
 	if !IsValid(curWep) or curWep:GetClass() != "weapon_vj_glock17" then self:SetBodygroup(4, 2) return end
 	if Type == 0 then
-		if self:GetWeaponState() != VJ.NPC_WEP_STATE_HOLSTERED then
+		if self:GetWeaponState() != VJ.WEP_STATE_HOLSTERED then
 			self:PlayAnim("drawpistol", true, 0.4, false)
 		end
 		VJ.EmitSound(self, "vj_bms_securityguard/pistol_holster.wav", 70)
-		self:SetWeaponState(VJ.NPC_WEP_STATE_HOLSTERED)
+		self:SetWeaponState(VJ.WEP_STATE_HOLSTERED)
 		timer.Simple(0.25, function()
 			if IsValid(self) then
 				self:SetBodygroup(4, 1)
@@ -75,7 +75,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnWeaponChange(newWeapon, oldWeapon, invSwitch)
 	if !invSwitch && newWeapon:GetClass() == "weapon_vj_glock17" then
-		self:SetWeaponState(VJ.NPC_WEP_STATE_HOLSTERED)
+		self:SetWeaponState(VJ.WEP_STATE_HOLSTERED)
 		self:SetBodygroup(4, 1)
 		newWeapon.WorldModel_Invisible = true
 	end
@@ -84,8 +84,8 @@ end
 function ENT:OnThinkActive()
 	if self.Dead or self:BusyWithActivity() then return end
 	if IsValid(self:GetEnemy()) then
-		if self:GetWeaponState() == VJ.NPC_WEP_STATE_HOLSTERED then self:Security_WeaponHolster(1) end
-	elseif self:GetWeaponState() == VJ.NPC_WEP_STATE_READY && (CurTime() - self.EnemyData.TimeSet) > 5 then
+		if self:GetWeaponState() == VJ.WEP_STATE_HOLSTERED then self:Security_WeaponHolster(1) end
+	elseif self:GetWeaponState() == VJ.WEP_STATE_READY && (CurTime() - self.EnemyData.TimeSet) > 5 then
 		self:Security_WeaponHolster(0)
 	end
 end
