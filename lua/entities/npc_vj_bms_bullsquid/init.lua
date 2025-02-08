@@ -60,10 +60,12 @@ local getEventName = util.GetAnimEventNameByID
 --
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
-	if eventName == "AE_SQUID_MELEE_ATTACK1" then
+	if eventName == "AE_SQUID_MELEE_ATTACK1" then -- Tail attack
+		self.MeleeAttackDamageAngleRadius = 180 -- Because its eyes turn
 		self.MeleeAttackDamage = 40
 		self:MeleeAttackCode()
 	elseif eventName == "AE_SQUID_MELEE_ATTACK2" then
+		self.MeleeAttackDamageAngleRadius = 100
 		self.MeleeAttackDamage = 50
 		self:MeleeAttackCode()
 	//elseif eventName == "AE_SQUID_RANGE_ATTACK1" then

@@ -82,7 +82,7 @@ function ENT:OnWeaponChange(newWeapon, oldWeapon, invSwitch)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnThinkActive()
-	if self.Dead or self:BusyWithActivity() then return end
+	if self.Dead or self:IsBusy("Activities") then return end
 	if IsValid(self:GetEnemy()) then
 		if self:GetWeaponState() == VJ.WEP_STATE_HOLSTERED then self:Security_WeaponHolster(1) end
 	elseif self:GetWeaponState() == VJ.WEP_STATE_READY && (CurTime() - self.EnemyData.TimeSet) > 5 then
