@@ -11,7 +11,7 @@ ENT.SightAngle = 360
 ENT.HullType = HULL_TINY
 ENT.EntitiesToNoCollide = {"npc_vj_bms_snark"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_SNARK"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_SNARK"}
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.AnimTbl_MeleeAttack = {}
@@ -32,9 +32,9 @@ ENT.LeapAttackExtraTimers = {0.2, 0.6} -- Extra leap attack timers | it will run
 ENT.LeapAttackDamage = 1
 ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
 
-ENT.IdleAlwaysWander = true -- Should the NPC constantly wander while idling?
+ENT.IdleAlwaysWander = true
 ENT.HasDeathCorpse = false -- Should a corpse spawn when it's killed?
-ENT.PushProps = false -- Should it push props when trying to move?
+ENT.PropInteraction = "OnlyDamage"
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = {"vj_bms_snark/hunt1.wav","vj_bms_snark/hunt2.wav","vj_bms_snark/hunt3.wav","vj_bms_snark/hunt4.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_snark/deploy1.wav","vj_bms_snark/deploy2.wav","vj_bms_snark/deploy3.wav"}

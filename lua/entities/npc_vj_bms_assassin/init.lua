@@ -9,7 +9,7 @@ ENT.Model = "models/VJ_BLACKMESA/hassassin.mdl" -- Model(s) to spawn with | Pick
 ENT.StartHealth = 50
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_BLACKOPS"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_BLACKOPS"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
@@ -23,7 +23,7 @@ ENT.NextAnyAttackTime_Melee = 0.5 -- How much time until it can use any attack a
 ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
 ENT.Weapon_CanCrouchAttack = false -- Can it crouch while shooting?
 ENT.Weapon_NoSpawnMenu = true -- If set to true, the NPC weapon setting in the spawnmenu will not be applied for this SNPC
-ENT.Weapon_Accuracy = 0.9 -- NPC's accuracy with weapons, affects bullet spread! | x < 1 = Better accuracy | x > 1 = Worse accuracy
+ENT.Weapon_Accuracy = 0.9
 
 ENT.CallForBackUpOnDamage = false -- Should the SNPC call for help when damaged? (Only happens if the SNPC hasn't seen a enemy)
 ENT.BringFriendsOnDeath = false -- Should the NPC's allies come to its position while it's dying?

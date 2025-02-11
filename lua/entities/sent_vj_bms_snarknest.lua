@@ -44,7 +44,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnTakeDamage(dmginfo,data)
 	self:SpawnBloodParticles(dmginfo)
-	self:SpawnBloodDecal(dmginfo)
+	self:SpawnBloodDecals(dmginfo)
 	self:EmitSound("vj_base/impact/flesh_alien.wav", 80, math.random(80, 100))
 	
 	self:SetHealth(self:Health() -dmginfo:GetDamage())
@@ -85,7 +85,7 @@ function ENT:SpawnBloodParticles(dmginfo, hitgroup)
 	bloodParticle:Fire("Kill", "", 0.1)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:SpawnBloodDecal(dmginfo, hitgroup)
+function ENT:SpawnBloodDecals(dmginfo, hitgroup)
 	local force = dmginfo:GetDamageForce()
 	local length = math.Clamp(force:Length() *10, 100, 300)
 	local paint = tobool(math.random(0, math.Round(length *0.125)) <= 1000)

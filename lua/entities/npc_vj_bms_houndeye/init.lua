@@ -9,7 +9,7 @@ ENT.Model = "models/VJ_BLACKMESA/houndeye.mdl" -- Model(s) to spawn with | Picks
 ENT.StartHealth = 80
 ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_XEN"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_XEN"}
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 ENT.Immune_Sonic = true -- Immune to sonic damage
 
@@ -27,8 +27,7 @@ ENT.DisableDefaultMeleeAttackDamageCode = true -- Disables the default melee att
 ENT.HasDeathAnimation = true -- Does it play an animation when it dies?
 ENT.AnimTbl_Death = ACT_DIESIMPLE
 ENT.DeathAnimationChance = 2 -- Put 1 if you want it to play the animation all the time
-ENT.PushProps = false -- Should it push props when trying to move?
-ENT.AttackProps = false -- Should it attack props when trying to move?
+ENT.PropInteraction = false
 ENT.FootStepTimeRun = 0.3 -- Delay between footstep sounds while it is running | false = Disable while running
 ENT.FootStepTimeWalk = 1 -- Delay between footstep sounds while it is walking | false = Disable while walking
 	-- ====== Flinching Code ====== --
