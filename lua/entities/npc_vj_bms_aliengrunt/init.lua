@@ -5,29 +5,29 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/VJ_BLACKMESA/agrunt.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/VJ_BLACKMESA/agrunt.mdl"
 ENT.StartHealth = 200
 ENT.HullType = HULL_MEDIUM_TALL
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_XEN"}
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
+ENT.HasMeleeAttack = true
+ENT.TimeUntilMeleeAttackDamage = false
 
-ENT.HasRangeAttack = true -- Can this NPC range attack?
+ENT.HasRangeAttack = true
 ENT.AnimTbl_RangeAttack = ACT_IDLE_ANGRY
-ENT.RangeAttackEntityToSpawn = "obj_vj_bms_hornet" -- Entities that it can spawn when range attacking | If set as a table, it picks a random entity
-ENT.RangeDistance = 1000 -- How far can it range attack?
-ENT.RangeToMeleeDistance = 250 -- How close does it have to be until it uses melee?
-ENT.TimeUntilRangeAttackProjectileRelease = 0.2 -- How much time until the projectile code is ran?
-ENT.NextRangeAttackTime = 3 -- How much time until it can use a range attack?
-ENT.RangeAttackReps = 8 -- How many times does it run the projectile code?
+ENT.RangeAttackEntityToSpawn = "obj_vj_bms_hornet"
+ENT.RangeDistance = 1000
+ENT.RangeToMeleeDistance = 250
+ENT.TimeUntilRangeAttackProjectileRelease = 0.2
+ENT.NextRangeAttackTime = 3
+ENT.RangeAttackReps = 8
 
-ENT.FootStepTimeRun = 0.5 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 1 -- Delay between footstep sounds while it is walking | false = Disable while walking
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound Paths ====== --
+ENT.FootStepTimeRun = 0.5
+ENT.FootStepTimeWalk = 1
+ENT.HasExtraMeleeAttackSounds = true
+
 ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav","vJ_bms_aliengrunt/step2.wav","vJ_bms_aliengrunt/step3.wav","vJ_bms_aliengrunt/step4.wav","vJ_bms_aliengrunt/step5.wav","vJ_bms_aliengrunt/step6.wav"}
 ENT.SoundTbl_Idle = {"vJ_bms_aliengrunt/idle1.wav","vJ_bms_aliengrunt/idle2.wav","vJ_bms_aliengrunt/idle3.wav","vJ_bms_aliengrunt/idle4.wav","vJ_bms_aliengrunt/idle5.wav","vJ_bms_aliengrunt/idle6.wav"}
 ENT.SoundTbl_Alert = {"vJ_bms_aliengrunt/alert1.wav","vJ_bms_aliengrunt/alert2.wav","vJ_bms_aliengrunt/alert3.wav","vJ_bms_aliengrunt/alert4.wav","vJ_bms_aliengrunt/alert5.wav","vJ_bms_aliengrunt/alert6.wav"}
@@ -47,12 +47,12 @@ local getEventName = util.GetAnimEventNameByID
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if (eventName == "AE_AGRUNT_MELEE_ATTACK_LOW" && self:GetActivity() != ACT_MELEE_ATTACK2) or eventName == "AE_AGRUNT_MELEE_ATTACK_HIGH" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:MultipleMeleeAttacks()
-	if self.NearestPointToEnemyDistance > 150 && self.NearestPointToEnemyDistance < 210 && !self.PropAP_IsVisible then
+	if self.NearestPointToEnemyDistance > 150 && self.NearestPointToEnemyDistance < 210 && !self.PropInteraction_Found then
 		self.MeleeAttackDistance = 210
 		self.MeleeAttackDamageDistance = 115
 		self.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK2

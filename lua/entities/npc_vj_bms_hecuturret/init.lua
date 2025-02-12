@@ -5,29 +5,29 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/VJ_BLACKMESA/sentry_ground.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/VJ_BLACKMESA/sentry_ground.mdl"
 ENT.StartHealth = 100
 ENT.HullType = HULL_HUMAN
-ENT.SightDistance = 1300 -- How far it can see
-ENT.MovementType = VJ_MOVETYPE_STATIONARY -- How the NPC moves around
-ENT.CanTurnWhileStationary = false -- If set to true, the SNPC will be able to turn while it's a stationary SNPC
+ENT.SightDistance = 1300
+ENT.MovementType = VJ_MOVETYPE_STATIONARY
+ENT.CanTurnWhileStationary = false
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_UNITED_STATES"}
-ENT.AlertedToIdleTime = VJ.SET(8, 8) -- How much time until it calms down after the enemy has been killed/disappeared | Sets self.Alerted to false after the timer expires
-ENT.HasMeleeAttack = false -- Can this NPC melee attack?
+ENT.AlertToIdleDelay = VJ.SET(8, 8)
+ENT.HasMeleeAttack = false
 
-ENT.HasRangeAttack = true -- Can this NPC range attack?
-ENT.DisableDefaultRangeAttackCode = true -- When true, it won't spawn the range attack entity, allowing you to make your own
-ENT.DisableRangeAttackAnimation = true -- if true, it will disable the animation code
+ENT.HasRangeAttack = true
+ENT.DisableDefaultRangeAttackCode = true
+ENT.DisableRangeAttackAnimation = true
 ENT.AnimTbl_RangeAttack = "fire"
-ENT.RangeDistance = 1300 -- How far can it range attack?
-ENT.RangeToMeleeDistance = 1 -- How close does it have to be until it uses melee?
-ENT.RangeAttackAngleRadius = 100 -- What is the attack angle radius? | 100 = In front of the NPC | 180 = All around the NPC
-ENT.TimeUntilRangeAttackProjectileRelease = 0.1 -- How much time until the projectile code is ran?
-ENT.RangeAttackReps = 3 -- How many times does it run the projectile code?
-ENT.NextRangeAttackTime = 0 -- How much time until it can use a range attack?
-ENT.NextAnyAttackTime_Range = 0.3 -- How much time until it can use any attack again? | Counted in Seconds
-	-- ====== Sound Paths ====== --
+ENT.RangeDistance = 1300
+ENT.RangeToMeleeDistance = 1
+ENT.RangeAttackAngleRadius = 100
+ENT.TimeUntilRangeAttackProjectileRelease = 0.1
+ENT.RangeAttackReps = 3
+ENT.NextRangeAttackTime = 0
+ENT.NextAnyAttackTime_Range = 0.3
+
 ENT.SoundTbl_Alert = {"vj_bms_groundturret/deploy.wav"}
 ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav","ambient/energy/spark2.wav","ambient/energy/spark3.wav","ambient/energy/spark4.wav"}
 ENT.SoundTbl_Death = {"vj_bms_groundturret/die.wav"}

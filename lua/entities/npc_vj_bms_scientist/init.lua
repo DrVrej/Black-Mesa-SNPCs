@@ -5,21 +5,21 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/humans/scientist.mdl" -- Model(s) to spawn with | Picks a random one if it's a table 
+ENT.Model = "models/humans/scientist.mdl"
 ENT.StartHealth = 60
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_BLACK_MESA_PERSONNEL", "CLASS_PLAYER_ALLY"}
-ENT.Behavior = VJ_BEHAVIOR_PASSIVE -- Doesn't attack anything
+ENT.Behavior = VJ_BEHAVIOR_PASSIVE
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 ENT.FriendsWithAllPlayerAllies = true
 ENT.BecomeEnemyToPlayer = 2
-ENT.DropDeathLoot = false -- Should it drop loot on death?
-ENT.HasOnPlayerSight = true -- Should do something when it sees the enemy? Example: Play a sound
-ENT.OnPlayerSightDispositionLevel = 1 -- 0 = Run it every time | 1 = Run it only when friendly to player | 2 = Run it only when enemy to player
-ENT.FootStepTimeRun = 0.4 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 0.5 -- Delay between footstep sounds while it is walking | false = Disable while walking
-	-- ====== Sound Paths ====== --
+ENT.DropDeathLoot = false
+ENT.HasOnPlayerSight = true
+ENT.OnPlayerSightDispositionLevel = 1
+ENT.FootStepTimeRun = 0.4
+ENT.FootStepTimeWalk = 0.5
+
 ENT.SoundTbl_FootStep = {"npc/footsteps/hardboot_generic1.wav","npc/footsteps/hardboot_generic2.wav","npc/footsteps/hardboot_generic3.wav","npc/footsteps/hardboot_generic4.wav","npc/footsteps/hardboot_generic5.wav","npc/footsteps/hardboot_generic6.wav",}
 ENT.SoundTbl_Idle = {"vj_bms_scientistmale/Idle1.wav","vj_bms_scientistmale/Idle2.wav","vj_bms_scientistmale/Idle3.wav","vj_bms_scientistmale/Idle4.wav","vj_bms_scientistmale/Idle5.wav","vj_bms_scientistmale/Idle6.wav","vj_bms_scientistmale/Idle7.wav","vj_bms_scientistmale/Idle8.wav","vj_bms_scientistmale/Idle9.wav","vj_bms_scientistmale/Idle10.wav","vj_bms_scientistmale/Idle11.wav","vj_bms_scientistmale/Idle12.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_scientistmale/alert1.wav","vj_bms_scientistmale/alert2.wav","vj_bms_scientistmale/alert3.wav","vj_bms_scientistmale/alert4.wav","vj_bms_scientistmale/alert5.wav","vj_bms_scientistmale/alert6.wav"}

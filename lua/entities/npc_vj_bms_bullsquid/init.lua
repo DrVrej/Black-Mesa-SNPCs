@@ -5,42 +5,41 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/VJ_BLACKMESA/bullsquid.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/VJ_BLACKMESA/bullsquid.mdl"
 ENT.StartHealth = 120
 ENT.HullType = HULL_WIDE_SHORT
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_XEN"}
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
-ENT.Immune_AcidPoisonRadiation = true -- Immune to Acid, Poison and Radiation
+ENT.Immune_AcidPoisonRadiation = true
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1, ACT_MELEE_ATTACK2}
-ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
-ENT.MeleeAttackDistance = 75 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
+ENT.TimeUntilMeleeAttackDamage = false
+ENT.MeleeAttackDistance = 75
+ENT.MeleeAttackDamageDistance = 100
+ENT.HasMeleeAttackKnockBack = true
 
-ENT.HasRangeAttack = true -- Can this NPC range attack?
+ENT.HasRangeAttack = true
 ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1
-ENT.RangeAttackEntityToSpawn = "obj_vj_bms_acidspit" -- Entities that it can spawn when range attacking | If set as a table, it picks a random entity
-ENT.RangeDistance = 2000 -- How far can it range attack?
-ENT.RangeToMeleeDistance = 300 -- How close does it have to be until it uses melee?
-ENT.TimeUntilRangeAttackProjectileRelease = 0.6 -- How much time until the projectile code is ran?
-ENT.NextRangeAttackTime = 1.2 -- How much time until it can use a range attack?
-ENT.RangeAttackExtraTimers = {0.65, 0.65, 0.7, 0.75, 0.8} -- Extra range attack timers | it will run the projectile code after the given amount of seconds
+ENT.RangeAttackEntityToSpawn = "obj_vj_bms_acidspit"
+ENT.RangeDistance = 2000
+ENT.RangeToMeleeDistance = 300
+ENT.TimeUntilRangeAttackProjectileRelease = 0.6
+ENT.NextRangeAttackTime = 1.2
+ENT.RangeAttackExtraTimers = {0.65, 0.65, 0.7, 0.75, 0.8}
 
-ENT.ConstantlyFaceEnemy = true -- Should it face the enemy constantly?
-ENT.ConstantlyFaceEnemy_IfAttacking = true -- Should it face the enemy when attacking?
-ENT.ConstantlyFaceEnemy_Postures = "Standing" -- "Both" = Moving or standing | "Moving" = Only when moving | "Standing" = Only when standing
-ENT.ConstantlyFaceEnemy_MinDistance = 2000 -- How close does it have to be until it starts to face the enemy?
-ENT.NoChaseAfterCertainRange = true -- Should the NPC stop chasing when the enemy is within the given far and close distances?
-ENT.NoChaseAfterCertainRange_FarDistance = "UseRangeDistance" -- How far until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
-ENT.NoChaseAfterCertainRange_CloseDistance = "UseRangeDistance" -- How near until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
-ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior | "OnlyRange" = Only does it if it's able to range attack
-ENT.FootStepTimeRun = 0.25 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 0.6 -- Delay between footstep sounds while it is walking | false = Disable while walking
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound Paths ====== --
+ENT.ConstantlyFaceEnemy = true
+ENT.ConstantlyFaceEnemy_IfAttacking = true
+ENT.ConstantlyFaceEnemy_Postures = "Standing"
+ENT.ConstantlyFaceEnemy_MinDistance = 2000
+ENT.LimitChaseDistance = "OnlyRange"
+ENT.LimitChaseDistance_Max = "UseRangeDistance"
+ENT.LimitChaseDistance_Min = "UseRangeDistance"
+ENT.FootStepTimeRun = 0.25
+ENT.FootStepTimeWalk = 0.6
+ENT.HasExtraMeleeAttackSounds = true
+
 ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav","vj_bms_bullsquid/step2.wav"}
 ENT.SoundTbl_Idle = {"vj_bms_bullsquid/Idle1.wav","vj_bms_bullsquid/Idle2.wav","vj_bms_bullsquid/Idle3.wav","vj_bms_bullsquid/Idle4.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_bullsquid/detect1.wav","vj_bms_bullsquid/detect2.wav","vj_bms_bullsquid/detect3.wav"}
@@ -63,13 +62,13 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if eventName == "AE_SQUID_MELEE_ATTACK1" then -- Tail attack
 		self.MeleeAttackDamageAngleRadius = 180 -- Because its eyes turn
 		self.MeleeAttackDamage = 40
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	elseif eventName == "AE_SQUID_MELEE_ATTACK2" then
 		self.MeleeAttackDamageAngleRadius = 100
 		self.MeleeAttackDamage = 50
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	//elseif eventName == "AE_SQUID_RANGE_ATTACK1" then
-		//self:RangeAttackCode()
+		//self:ExecuteRangeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

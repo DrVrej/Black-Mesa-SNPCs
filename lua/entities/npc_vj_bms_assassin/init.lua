@@ -5,33 +5,32 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/VJ_BLACKMESA/hassassin.mdl" -- Model(s) to spawn with | Picks a random one if it's a table 
+ENT.Model = "models/VJ_BLACKMESA/hassassin.mdl"
 ENT.StartHealth = 50
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_BLACKOPS"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDamage = 10
-ENT.MeleeAttackDistance = 35 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 70 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = 0.3 -- This counted in seconds | This calculates the time until it hits something
-ENT.NextAnyAttackTime_Melee = 0.5 -- How much time until it can use any attack again? | Counted in Seconds
+ENT.MeleeAttackDistance = 35
+ENT.MeleeAttackDamageDistance = 70
+ENT.TimeUntilMeleeAttackDamage = 0.3
+ENT.NextAnyAttackTime_Melee = 0.5
 
 ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
-ENT.Weapon_CanCrouchAttack = false -- Can it crouch while shooting?
-ENT.Weapon_NoSpawnMenu = true -- If set to true, the NPC weapon setting in the spawnmenu will not be applied for this SNPC
+ENT.Weapon_CanCrouchAttack = false
+ENT.Weapon_NoSpawnMenu = true
 ENT.Weapon_Accuracy = 0.9
 
-ENT.CallForBackUpOnDamage = false -- Should the SNPC call for help when damaged? (Only happens if the SNPC hasn't seen a enemy)
-ENT.BringFriendsOnDeath = false -- Should the NPC's allies come to its position while it's dying?
-ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true -- Should it only move away and not hide behind cover?
-ENT.MoveOrHideOnDamageByEnemy_NextTime = VJ.SET(2, 2.5) -- How long until it can do this behavior again? (hide behind cover or move away)
-ENT.FootStepTimeRun = 0.3 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 0.3 -- Delay between footstep sounds while it is walking | false = Disable while walking
-	-- ====== Sound Paths ====== --
+ENT.CallForBackUpOnDamage = false
+ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true
+ENT.MoveOrHideOnDamageByEnemy_NextTime = VJ.SET(2, 2.5)
+ENT.FootStepTimeRun = 0.3
+ENT.FootStepTimeWalk = 0.3
+
 ENT.SoundTbl_FootStep = {"vj_bms_assassin/step1.wav","vj_bms_assassin/step2.wav"}
 ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_assassin/kick1.wav","vj_bms_assassin/kick2.wav","vj_bms_assassin/kick3.wav","vj_bms_assassin/kick4.wav","vj_bms_assassin/kick5.wav","vj_bms_assassin/kick6.wav"}
 ENT.SoundTbl_Pain = {"vj_bms_assassin/pain1.wav","vj_bms_assassin/pain2.wav","vj_bms_assassin/pain3.wav","vj_bms_assassin/pain4.wav","vj_bms_assassin/pain5.wav","vj_bms_assassin/pain6.wav",}

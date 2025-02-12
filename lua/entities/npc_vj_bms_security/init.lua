@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/humans/guard.mdl" -- Model(s) to spawn with | Picks a random one if it's a table 
+ENT.Model = "models/humans/guard.mdl"
 ENT.StartHealth = 60
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -13,15 +13,15 @@ ENT.VJ_NPC_Class = {"CLASS_BLACK_MESA_PERSONNEL", "CLASS_PLAYER_ALLY"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 ENT.FriendsWithAllPlayerAllies = true
 ENT.BecomeEnemyToPlayer = 2
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = {"vjseq_swing"}
 ENT.MeleeAttackDamage = 10
-//ENT.Weapon_FiringDistanceClose = 10 -- How close until it stops shooting
-ENT.FootStepTimeRun = 0.4 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 0.5 -- Delay between footstep sounds while it is walking | false = Disable while walking
-ENT.HasOnPlayerSight = true -- Should do something when it sees the enemy? Example: Play a sound
-ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-	-- ====== Sound Paths ====== --
+//ENT.Weapon_FiringDistanceClose = 10
+ENT.FootStepTimeRun = 0.4
+ENT.FootStepTimeWalk = 0.5
+ENT.HasOnPlayerSight = true
+ENT.CanFlinch = 1
+
 ENT.SoundTbl_Idle = {"vj_bms_securityguard/Idle1.wav","vj_bms_securityguard/Idle2.wav","vj_bms_securityguard/Idle3.wav","vj_bms_securityguard/Idle4.wav","vj_bms_securityguard/Idle5.wav","vj_bms_securityguard/Idle6.wav","vj_bms_securityguard/Idle7.wav","vj_bms_securityguard/Idle8.wav","vj_bms_securityguard/Idle9.wav","vj_bms_securityguard/Idle10.wav","vj_bms_securityguard/Idle11.wav","vj_bms_securityguard/Idle12.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_securityguard/alert1.wav","vj_bms_securityguard/alert2.wav","vj_bms_securityguard/alert3.wav","vj_bms_securityguard/alert4.wav","vj_bms_securityguard/alert5.wav","vj_bms_securityguard/alert6.wav"}
 ENT.SoundTbl_CombatIdle = {"vj_bms_securityguard/attack1.wav","vj_bms_securityguard/attack2.wav","vj_bms_securityguard/attack3.wav","vj_bms_securityguard/attack4.wav","vj_bms_securityguard/attack5.wav","vj_bms_securityguard/attack6.wav","vj_bms_securityguard/attack7.wav","vj_bms_securityguard/attack8.wav","vj_bms_securityguard/attack9.wav","vj_bms_securityguard/attack10.wav","vj_bms_securityguard/attack11.wav","vj_bms_securityguard/attack12.wav",}

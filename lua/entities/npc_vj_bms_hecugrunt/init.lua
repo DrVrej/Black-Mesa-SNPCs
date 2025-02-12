@@ -5,24 +5,24 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/humans/marine.mdl" -- Model(s) to spawn with | Picks a random one if it's a table 
+ENT.Model = "models/humans/marine.mdl"
 ENT.StartHealth = 60
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_UNITED_STATES"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.MeleeAttackDamage = 10
 
-ENT.HasGrenadeAttack = true -- Should the NPC have a grenade attack?
-ENT.HasOnPlayerSight = true -- Should do something when it sees the enemy? Example: Play a sound
-ENT.OnPlayerSightDistance = 2000 -- How close should the player be until it runs the code?
-ENT.OnPlayerSightDispositionLevel = 2 -- 0 = Run it every time | 1 = Run it only when friendly to player | 2 = Run it only when enemy to player
-	-- ====== Flinching Code ====== --
-ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
-	-- ====== Sound Paths ====== --
+ENT.HasGrenadeAttack = true
+ENT.HasOnPlayerSight = true
+ENT.OnPlayerSightDistance = 2000
+ENT.OnPlayerSightDispositionLevel = 2
+
+ENT.CanFlinch = 1
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
+
 ENT.SoundTbl_Idle = {"vj_bms_hecu/idle1.wav","vj_bms_hecu/idle2.wav","vj_bms_hecu/idle3.wav","vj_bms_hecu/idle4.wav","vj_bms_hecu/idle5.wav","vj_bms_hecu/idle6.wav","vj_bms_hecu/idle7.wav","vj_bms_hecu/idle8.wav","vj_bms_hecu/idle9.wav","vj_bms_hecu/idle10.wav","vj_bms_hecu/idle11.wav","vj_bms_hecu/idle12.wav","vj_bms_hecu/idle13.wav","vj_bms_hecu/idle14.wav","vj_bms_hecu/idle15.wav","vj_bms_hecu/idle16.wav"}
 ENT.SoundTbl_CombatIdle = {"vj_bms_hecu/idle_combat1.wav","vj_bms_hecu/idle_combat2.wav","vj_bms_hecu/idle_combat3.wav","vj_bms_hecu/idle_combat4.wav","vj_bms_hecu/idle_combat5.wav","vj_bms_hecu/idle_combat6.wav"}
 ENT.SoundTbl_OnPlayerSight = {"vj_bms_hecu/freeman1.wav","vj_bms_hecu/freeman2.wav","vj_bms_hecu/freeman3.wav"}
