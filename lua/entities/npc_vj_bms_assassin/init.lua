@@ -25,9 +25,8 @@ ENT.Weapon_CanCrouchAttack = false
 ENT.Weapon_NoSpawnMenu = true
 ENT.Weapon_Accuracy = 0.9
 
-ENT.CallForBackUpOnDamage = false
-ENT.MoveOrHideOnDamageByEnemy_OnlyMove = true
-ENT.MoveOrHideOnDamageByEnemy_NextTime = VJ.SET(2, 2.5)
+ENT.DamageAllyResponse = false
+ENT.CombatDamageResponse_Cooldown = VJ.SET(2, 2.5)
 ENT.FootStepTimeRun = 0.3
 ENT.FootStepTimeWalk = 0.3
 

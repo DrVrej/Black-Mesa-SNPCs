@@ -16,12 +16,13 @@ ENT.Immune_Sonic = true
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_RANGE_ATTACK1
 ENT.MeleeAttackDistance = 164
-ENT.MeleeAttackDamageDistance = 300
+ENT.MeleeAttackDamageDistance = 400
+ENT.MeleeAttackDamageAngleRadius = 180
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 25
 ENT.MeleeAttackDamageType = DMG_SONIC
-ENT.MeleeAttackDSPSoundType = 34
-ENT.MeleeAttackDSPSoundUseDamage = false
+ENT.MeleeAttackDSP = 34
+ENT.MeleeAttackDSPLimit = false
 ENT.DisableDefaultMeleeAttackDamageCode = true
 
 ENT.HasDeathAnimation = true
@@ -31,7 +32,7 @@ ENT.PropInteraction = false
 ENT.FootStepTimeRun = 0.3
 ENT.FootStepTimeWalk = 1
 
-ENT.CanFlinch = 2
+ENT.CanFlinch = "DamageTypes"
 ENT.FlinchChance = 1
 ENT.AnimTbl_Flinch = ACT_SMALL_FLINCH
 
@@ -41,7 +42,7 @@ ENT.SoundTbl_Alert = {"vj_bms_houndeye/he_alert1.wav","vj_bms_houndeye/he_alert2
 ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_houndeye/charge1.wav","vj_bms_houndeye/charge2.wav","vj_bms_houndeye/charge3.wav"}
 //ENT.SoundTbl_MeleeAttack = {"vj_bms_houndeye/charge1.wav","vj_bms_houndeye/charge2.wav","vj_bms_houndeye/charge3.wav"}
 ENT.SoundTbl_Pain = {"vj_bms_houndeye/pain1.wav","vj_bms_houndeye/pain2.wav","vj_bms_houndeye/pain3.wav"}
-ENT.SoundTbl_Death = {"vj_bms_houndeye/die1.wav"}
+ENT.SoundTbl_Death = "vj_bms_houndeye/die1.wav"
 
 local animAlert = {"vjseq_madidle", "vjseq_madidle3"} // ACT_IDLE_ANGRY - Don't use this because "madidle2"  looks weird
 
@@ -75,20 +76,22 @@ function ENT:OnAlert(ent)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnMeleeAttack_BeforeChecks()
-	effects.BeamRingPoint(self:GetPos(), 0.3, 2, 400, 16, 0, Color(188, 220, 255), {material="sprites/vj_bms_shockwave", framerate=20})
-	effects.BeamRingPoint(self:GetPos(), 0.3, 2, 200, 16, 0, Color(188, 220, 255), {material="sprites/vj_bms_shockwave", framerate=20})
+	local myPos = self:GetPos()
+	effects.BeamRingPoint(myPos, 0.3, 2, 400, 16, 0, Color(188, 220, 255), {material="sprites/vj_bms_shockwave", framerate=20})
+	effects.BeamRingPoint(myPos, 0.3, 2, 200, 16, 0, Color(188, 220, 255), {material="sprites/vj_bms_shockwave", framerate=20})
 	
 	if self.HasSounds && self.HasMeleeAttackSounds then
 		VJ.EmitSound(self, "vj_bms_houndeye/blast1.wav", 100, math.random(80, 100))
 	end
 	
-	VJ.ApplyRadiusDamage(self, self, self:GetPos(), 400, 25, self.MeleeAttackDamageType, true, true, {DisableVisibilityCheck=true, Force=80})
+	VJ.ApplyRadiusDamage(self, self, myPos, 400, 25, self.MeleeAttackDamageType, true, true, {DisableVisibilityCheck=true, Force=80})
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnDeath(dmginfo, hitgroup, status)
 	-- Fix getting stuck in ground due to death anim
 	if status == "DeathAnim" then
-		self:SetLocalPos(Vector(self:GetPos().x, self:GetPos().y, self:GetPos().z + 5))
+		local myPos = self:GetPos()
+		self:SetLocalPos(Vector(myPos.x, myPos.y, myPos.z + 5))
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

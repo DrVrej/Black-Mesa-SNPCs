@@ -20,7 +20,7 @@ ENT.HasOnPlayerSight = true
 ENT.OnPlayerSightDistance = 2000
 ENT.OnPlayerSightDispositionLevel = 2
 
-ENT.CanFlinch = 1
+ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 
 ENT.SoundTbl_Idle = {"vj_bms_hecu/idle1.wav","vj_bms_hecu/idle2.wav","vj_bms_hecu/idle3.wav","vj_bms_hecu/idle4.wav","vj_bms_hecu/idle5.wav","vj_bms_hecu/idle6.wav","vj_bms_hecu/idle7.wav","vj_bms_hecu/idle8.wav","vj_bms_hecu/idle9.wav","vj_bms_hecu/idle10.wav","vj_bms_hecu/idle11.wav","vj_bms_hecu/idle12.wav","vj_bms_hecu/idle13.wav","vj_bms_hecu/idle14.wav","vj_bms_hecu/idle15.wav","vj_bms_hecu/idle16.wav"}

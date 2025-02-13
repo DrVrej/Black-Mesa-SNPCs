@@ -18,7 +18,7 @@ ENT.HasMeleeAttack = false
 
 ENT.HasRangeAttack = true
 ENT.DisableDefaultRangeAttackCode = true
-ENT.DisableRangeAttackAnimation = true
+ENT.AnimTbl_RangeAttack = false
 ENT.AnimTbl_RangeAttack = "fire"
 ENT.RangeDistance = 1300
 ENT.RangeToMeleeDistance = 1
