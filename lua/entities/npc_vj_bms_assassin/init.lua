@@ -22,13 +22,13 @@ ENT.NextAnyAttackTime_Melee = 0.5
 
 ENT.AnimTbl_WeaponAttack = ACT_RANGE_ATTACK_PISTOL
 ENT.Weapon_CanCrouchAttack = false
-ENT.Weapon_NoSpawnMenu = true
+ENT.Weapon_IgnoreSpawnMenu = true
 ENT.Weapon_Accuracy = 0.9
 
 ENT.DamageAllyResponse = false
 ENT.CombatDamageResponse_Cooldown = VJ.SET(2, 2.5)
-ENT.FootStepTimeRun = 0.3
-ENT.FootStepTimeWalk = 0.3
+ENT.FootstepTimerRun = 0.3
+ENT.FootstepTimerWalk = 0.3
 
 ENT.SoundTbl_FootStep = {"vj_bms_assassin/step1.wav","vj_bms_assassin/step2.wav"}
 ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_assassin/kick1.wav","vj_bms_assassin/kick2.wav","vj_bms_assassin/kick3.wav","vj_bms_assassin/kick4.wav","vj_bms_assassin/kick5.wav","vj_bms_assassin/kick6.wav"}
@@ -74,7 +74,7 @@ function ENT:Init()
 		util.SpriteTrail(self, 7, Color(200, 0, 0), true, 6, 6, 0.1, 0.04167, "VJ_Base/sprites/trail.vmt")
 	end
 	
-	if self.DisableWeapons == false then
+	if self.Weapon_Disabled == false then
 		self:Give("weapon_vj_glock17")
 		local activeWep = self:GetActiveWeapon()
 		if IsValid(activeWep) then

@@ -13,15 +13,15 @@ ENT.MovementType = VJ_MOVETYPE_STATIONARY
 ENT.CanTurnWhileStationary = false
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_UNITED_STATES"}
-ENT.AlertToIdleDelay = VJ.SET(8, 8)
+ENT.AlertTimeout = VJ.SET(8, 8)
 ENT.HasMeleeAttack = false
 
 ENT.HasRangeAttack = true
 ENT.DisableDefaultRangeAttackCode = true
 ENT.AnimTbl_RangeAttack = false
 ENT.AnimTbl_RangeAttack = "fire"
-ENT.RangeDistance = 1300
-ENT.RangeToMeleeDistance = 1
+ENT.RangeAttackMaxDistance = 1300
+ENT.RangeAttackMinDistance = 1
 ENT.RangeAttackAngleRadius = 100
 ENT.TimeUntilRangeAttackProjectileRelease = 0.1
 ENT.RangeAttackReps = 3

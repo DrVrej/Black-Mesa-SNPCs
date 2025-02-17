@@ -22,9 +22,9 @@ ENT.HasMeleeAttackKnockBack = true
 
 ENT.HasRangeAttack = true
 ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1
-ENT.RangeAttackEntityToSpawn = "obj_vj_bms_acidspit"
-ENT.RangeDistance = 2000
-ENT.RangeToMeleeDistance = 300
+ENT.RangeAttackProjectiles = "obj_vj_bms_acidspit"
+ENT.RangeAttackMaxDistance = 2000
+ENT.RangeAttackMinDistance = 300
 ENT.TimeUntilRangeAttackProjectileRelease = 0.6
 ENT.NextRangeAttackTime = 1.2
 ENT.RangeAttackExtraTimers = {0.65, 0.65, 0.7, 0.75, 0.8}
@@ -36,8 +36,8 @@ ENT.ConstantlyFaceEnemy_MinDistance = 2000
 ENT.LimitChaseDistance = "OnlyRange"
 ENT.LimitChaseDistance_Max = "UseRangeDistance"
 ENT.LimitChaseDistance_Min = "UseRangeDistance"
-ENT.FootStepTimeRun = 0.25
-ENT.FootStepTimeWalk = 0.6
+ENT.FootstepTimerRun = 0.25
+ENT.FootstepTimerWalk = 0.6
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav","vj_bms_bullsquid/step2.wav"}

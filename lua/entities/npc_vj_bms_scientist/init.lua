@@ -17,8 +17,8 @@ ENT.BecomeEnemyToPlayer = 2
 ENT.DropDeathLoot = false
 ENT.HasOnPlayerSight = true
 ENT.OnPlayerSightDispositionLevel = 1
-ENT.FootStepTimeRun = 0.4
-ENT.FootStepTimeWalk = 0.5
+ENT.FootstepTimerRun = 0.4
+ENT.FootstepTimerWalk = 0.5
 
 ENT.SoundTbl_FootStep = {"npc/footsteps/hardboot_generic1.wav","npc/footsteps/hardboot_generic2.wav","npc/footsteps/hardboot_generic3.wav","npc/footsteps/hardboot_generic4.wav","npc/footsteps/hardboot_generic5.wav","npc/footsteps/hardboot_generic6.wav",}
 ENT.SoundTbl_Idle = {"vj_bms_scientistmale/Idle1.wav","vj_bms_scientistmale/Idle2.wav","vj_bms_scientistmale/Idle3.wav","vj_bms_scientistmale/Idle4.wav","vj_bms_scientistmale/Idle5.wav","vj_bms_scientistmale/Idle6.wav","vj_bms_scientistmale/Idle7.wav","vj_bms_scientistmale/Idle8.wav","vj_bms_scientistmale/Idle9.wav","vj_bms_scientistmale/Idle10.wav","vj_bms_scientistmale/Idle11.wav","vj_bms_scientistmale/Idle12.wav"}

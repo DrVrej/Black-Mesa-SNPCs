@@ -16,8 +16,8 @@ ENT.BecomeEnemyToPlayer = 2
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = "vjseq_swing"
 ENT.MeleeAttackDamage = 10
-ENT.FootStepTimeRun = 0.4
-ENT.FootStepTimeWalk = 0.5
+ENT.FootstepTimerRun = 0.4
+ENT.FootstepTimerWalk = 0.5
 ENT.HasOnPlayerSight = true
 ENT.CanFlinch = true
 

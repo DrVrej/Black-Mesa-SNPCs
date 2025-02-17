@@ -17,15 +17,15 @@ ENT.TimeUntilMeleeAttackDamage = false
 
 ENT.HasRangeAttack = true
 ENT.AnimTbl_RangeAttack = ACT_IDLE_ANGRY
-ENT.RangeAttackEntityToSpawn = "obj_vj_bms_hornet"
-ENT.RangeDistance = 1000
-ENT.RangeToMeleeDistance = 250
+ENT.RangeAttackProjectiles = "obj_vj_bms_hornet"
+ENT.RangeAttackMaxDistance = 1000
+ENT.RangeAttackMinDistance = 250
 ENT.TimeUntilRangeAttackProjectileRelease = 0.2
 ENT.NextRangeAttackTime = 3
 ENT.RangeAttackReps = 8
 
-ENT.FootStepTimeRun = 0.5
-ENT.FootStepTimeWalk = 1
+ENT.FootstepTimerRun = 0.5
+ENT.FootstepTimerWalk = 1
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav","vJ_bms_aliengrunt/step2.wav","vJ_bms_aliengrunt/step3.wav","vJ_bms_aliengrunt/step4.wav","vJ_bms_aliengrunt/step5.wav","vJ_bms_aliengrunt/step6.wav"}
