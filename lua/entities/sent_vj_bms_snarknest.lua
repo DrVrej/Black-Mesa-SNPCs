@@ -10,7 +10,6 @@ ENT.Type 			= "ai"
 ENT.PrintName		= "Snark Nest"
 ENT.Author 			= "DrVrej"
 ENT.Contact 		= "http://steamcommunity.com/groups/vrejgaming"
-ENT.Information		= "SEnt for my SNPCs"
 ENT.Category		= "Black Mesa"
 
 ENT.Spawnable		= false

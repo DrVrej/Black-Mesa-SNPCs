@@ -17,14 +17,14 @@ ENT.BecomeEnemyToPlayer = 2
 ENT.DropDeathLoot = false
 ENT.HasOnPlayerSight = true
 ENT.OnPlayerSightDispositionLevel = 1
-ENT.FootstepTimerRun = 0.4
-ENT.FootstepTimerWalk = 0.5
+ENT.FootstepSoundTimerRun = 0.4
+ENT.FootstepSoundTimerWalk = 0.5
 
 ENT.SoundTbl_FootStep = {"npc/footsteps/hardboot_generic1.wav","npc/footsteps/hardboot_generic2.wav","npc/footsteps/hardboot_generic3.wav","npc/footsteps/hardboot_generic4.wav","npc/footsteps/hardboot_generic5.wav","npc/footsteps/hardboot_generic6.wav",}
 ENT.SoundTbl_Idle = {"vj_bms_scientistmale/Idle1.wav","vj_bms_scientistmale/Idle2.wav","vj_bms_scientistmale/Idle3.wav","vj_bms_scientistmale/Idle4.wav","vj_bms_scientistmale/Idle5.wav","vj_bms_scientistmale/Idle6.wav","vj_bms_scientistmale/Idle7.wav","vj_bms_scientistmale/Idle8.wav","vj_bms_scientistmale/Idle9.wav","vj_bms_scientistmale/Idle10.wav","vj_bms_scientistmale/Idle11.wav","vj_bms_scientistmale/Idle12.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_scientistmale/alert1.wav","vj_bms_scientistmale/alert2.wav","vj_bms_scientistmale/alert3.wav","vj_bms_scientistmale/alert4.wav","vj_bms_scientistmale/alert5.wav","vj_bms_scientistmale/alert6.wav"}
 ENT.SoundTbl_CombatIdle = {"vj_bms_scientistmale/attack1.wav","vj_bms_scientistmale/attack2.wav","vj_bms_scientistmale/attack3.wav","vj_bms_scientistmale/attack4.wav","vj_bms_scientistmale/attack5.wav","vj_bms_scientistmale/attack6.wav","vj_bms_scientistmale/attack7.wav","vj_bms_scientistmale/attack8.wav","vj_bms_scientistmale/attack9.wav","vj_bms_scientistmale/attack10.wav","vj_bms_scientistmale/attack11.wav","vj_bms_scientistmale/attack12.wav",}
-ENT.SoundTbl_OnGrenadeSight = {"vj_bms_scientistmale/nade1.wav","vj_bms_scientistmale/nade2.wav","vj_bms_scientistmale/nade3.wav","vj_bms_scientistmale/nade4.wav","vj_bms_scientistmale/nade5.wav","vj_bms_scientistmale/nade6.wav"}
+ENT.SoundTbl_GrenadeSight = {"vj_bms_scientistmale/nade1.wav","vj_bms_scientistmale/nade2.wav","vj_bms_scientistmale/nade3.wav","vj_bms_scientistmale/nade4.wav","vj_bms_scientistmale/nade5.wav","vj_bms_scientistmale/nade6.wav"}
 ENT.SoundTbl_Pain = {"vj_bms_scientistmale/die1.wav","vj_bms_scientistmale/die2.wav","vj_bms_scientistmale/die3.wav","vj_bms_scientistmale/die4.wav","vj_bms_scientistmale/die5.wav","vj_bms_scientistmale/die6.wav"}
 ENT.SoundTbl_Death = {"vj_bms_scientistmale/die1.wav","vj_bms_scientistmale/die2.wav","vj_bms_scientistmale/die3.wav","vj_bms_scientistmale/die4.wav","vj_bms_scientistmale/die5.wav","vj_bms_scientistmale/die6.wav"}
 ENT.SoundTbl_FollowPlayer = {"vj_bms_scientistmale/startfollowing1.wav","vj_bms_scientistmale/startfollowing2.wav","vj_bms_scientistmale/startfollowing3.wav","vj_bms_scientistmale/startfollowing4.wav","vj_bms_scientistmale/startfollowing5.wav","vj_bms_scientistmale/startfollowing6.wav"}

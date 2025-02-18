@@ -29,8 +29,8 @@ ENT.HasDeathAnimation = true
 ENT.AnimTbl_Death = ACT_DIESIMPLE
 ENT.DeathAnimationChance = 2
 ENT.PropInteraction = false
-ENT.FootstepTimerRun = 0.3
-ENT.FootstepTimerWalk = 1
+ENT.FootstepSoundTimerRun = 0.3
+ENT.FootstepSoundTimerWalk = 1
 
 ENT.CanFlinch = "DamageTypes"
 ENT.FlinchChance = 1

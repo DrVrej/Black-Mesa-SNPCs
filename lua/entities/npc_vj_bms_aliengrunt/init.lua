@@ -24,8 +24,8 @@ ENT.TimeUntilRangeAttackProjectileRelease = 0.2
 ENT.NextRangeAttackTime = 3
 ENT.RangeAttackReps = 8
 
-ENT.FootstepTimerRun = 0.5
-ENT.FootstepTimerWalk = 1
+ENT.FootstepSoundTimerRun = 0.5
+ENT.FootstepSoundTimerWalk = 1
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav","vJ_bms_aliengrunt/step2.wav","vJ_bms_aliengrunt/step3.wav","vJ_bms_aliengrunt/step4.wav","vJ_bms_aliengrunt/step5.wav","vJ_bms_aliengrunt/step6.wav"}

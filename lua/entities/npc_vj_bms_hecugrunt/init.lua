@@ -27,10 +27,10 @@ ENT.SoundTbl_Idle = {"vj_bms_hecu/idle1.wav","vj_bms_hecu/idle2.wav","vj_bms_hec
 ENT.SoundTbl_CombatIdle = {"vj_bms_hecu/idle_combat1.wav","vj_bms_hecu/idle_combat2.wav","vj_bms_hecu/idle_combat3.wav","vj_bms_hecu/idle_combat4.wav","vj_bms_hecu/idle_combat5.wav","vj_bms_hecu/idle_combat6.wav"}
 ENT.SoundTbl_OnPlayerSight = {"vj_bms_hecu/freeman1.wav","vj_bms_hecu/freeman2.wav","vj_bms_hecu/freeman3.wav"}
 ENT.SoundTbl_Alert = {"vj_bms_hecu/alert1.wav","vj_bms_hecu/alert2.wav","vj_bms_hecu/alert3.wav","vj_bms_hecu/alert4.wav","vj_bms_hecu/alert5.wav","vj_bms_hecu/alert6.wav","vj_bms_hecu/alert7.wav","vj_bms_hecu/alert8.wav","vj_bms_hecu/alert9.wav","vj_bms_hecu/alert10.wav"}
-ENT.SoundTbl_OnReceiveOrder = {"vj_bms_hecu/answer1.wav","vj_bms_hecu/answer2.wav","vj_bms_hecu/answer3.wav","vj_bms_hecu/answer4.wav","vj_bms_hecu/answer5.wav"}
+ENT.SoundTbl_ReceiveOrder = {"vj_bms_hecu/answer1.wav","vj_bms_hecu/answer2.wav","vj_bms_hecu/answer3.wav","vj_bms_hecu/answer4.wav","vj_bms_hecu/answer5.wav"}
 ENT.SoundTbl_Suppressing = {"vj_bms_hecu/supressing1.wav","vj_bms_hecu/supressing2.wav","vj_bms_hecu/supressing3.wav","vj_bms_hecu/supressing4.wav","vj_bms_hecu/supressing5.wav","vj_bms_hecu/supressing6.wav","vj_bms_hecu/supressing7.wav","vj_bms_hecu/supressing8.wav",}
 ENT.SoundTbl_GrenadeAttack = {"vj_bms_hecu/throwgrenade1.wav","vj_bms_hecu/throwgrenade2.wav","vj_bms_hecu/throwgrenade3.wav","vj_bms_hecu/throwgrenade4.wav","vj_bms_hecu/throwgrenade5.wav","vj_bms_hecu/throwgrenade6.wav"}
-ENT.SoundTbl_OnGrenadeSight = {"vj_bms_hecu/grenade1.wav","vj_bms_hecu/grenade2.wav","vj_bms_hecu/grenade3.wav","vj_bms_hecu/grenade4.wav","vj_bms_hecu/grenade5.wav","vj_bms_hecu/grenade6.wav","vj_bms_hecu/grenade7.wav","vj_bms_hecu/grenade8.wav","vj_bms_hecu/grenade9.wav"}
+ENT.SoundTbl_GrenadeSight = {"vj_bms_hecu/grenade1.wav","vj_bms_hecu/grenade2.wav","vj_bms_hecu/grenade3.wav","vj_bms_hecu/grenade4.wav","vj_bms_hecu/grenade5.wav","vj_bms_hecu/grenade6.wav","vj_bms_hecu/grenade7.wav","vj_bms_hecu/grenade8.wav","vj_bms_hecu/grenade9.wav"}
 ENT.SoundTbl_Pain = {"vj_bms_hecu/pain1.wav","vj_bms_hecu/pain2.wav","vj_bms_hecu/pain3.wav","vj_bms_hecu/pain4.wav","vj_bms_hecu/pain5.wav","vj_bms_hecu/pain6.wav","vj_bms_hecu/pain7.wav","vj_bms_hecu/pain8.wav","vj_bms_hecu/pain9.wav","vj_bms_hecu/pain10.wav"}
 ENT.SoundTbl_Death = {"vj_bms_hecu/die1.wav","vj_bms_hecu/die2.wav","vj_bms_hecu/die3.wav","vj_bms_hecu/die4.wav","vj_bms_hecu/die5.wav","vj_bms_hecu/die6.wav"}
 

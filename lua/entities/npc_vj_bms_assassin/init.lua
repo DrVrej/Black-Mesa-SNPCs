@@ -27,8 +27,8 @@ ENT.Weapon_Accuracy = 0.9
 
 ENT.DamageAllyResponse = false
 ENT.CombatDamageResponse_Cooldown = VJ.SET(2, 2.5)
-ENT.FootstepTimerRun = 0.3
-ENT.FootstepTimerWalk = 0.3
+ENT.FootstepSoundTimerRun = 0.3
+ENT.FootstepSoundTimerWalk = 0.3
 
 ENT.SoundTbl_FootStep = {"vj_bms_assassin/step1.wav","vj_bms_assassin/step2.wav"}
 ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_assassin/kick1.wav","vj_bms_assassin/kick2.wav","vj_bms_assassin/kick3.wav","vj_bms_assassin/kick4.wav","vj_bms_assassin/kick5.wav","vj_bms_assassin/kick6.wav"}

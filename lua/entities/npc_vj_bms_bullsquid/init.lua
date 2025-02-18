@@ -36,8 +36,8 @@ ENT.ConstantlyFaceEnemy_MinDistance = 2000
 ENT.LimitChaseDistance = "OnlyRange"
 ENT.LimitChaseDistance_Max = "UseRangeDistance"
 ENT.LimitChaseDistance_Min = "UseRangeDistance"
-ENT.FootstepTimerRun = 0.25
-ENT.FootstepTimerWalk = 0.6
+ENT.FootstepSoundTimerRun = 0.25
+ENT.FootstepSoundTimerWalk = 0.6
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav","vj_bms_bullsquid/step2.wav"}
