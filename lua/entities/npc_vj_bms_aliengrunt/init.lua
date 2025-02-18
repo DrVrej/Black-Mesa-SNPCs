@@ -77,7 +77,7 @@ function ENT:CustomRangeAttackCode_AfterProjectileSpawn(projectile)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjSpawnPos(projectile)
+function ENT:RangeAttackProjPos(projectile)
 	return self:GetAttachment(self:LookupAttachment("muzzle")).Pos
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

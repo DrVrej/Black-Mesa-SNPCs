@@ -76,11 +76,11 @@ function ENT:MeleeAttackKnockbackVelocity(hitEnt)
 	return self:GetForward()*55 + self:GetUp()*255
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjSpawnPos(projectile)
+function ENT:RangeAttackProjPos(projectile)
 	return self:GetAttachment(self:LookupAttachment("Mouth")).Pos
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjVelocity(projectile)
+function ENT:RangeAttackProjVel(projectile)
 	return VJ.CalculateTrajectory(self, self:GetEnemy(), "Curve", projectile:GetPos() + VectorRand(-15, 15), 1, 50)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

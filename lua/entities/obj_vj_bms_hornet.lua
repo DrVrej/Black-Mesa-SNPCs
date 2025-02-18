@@ -62,16 +62,17 @@ function ENT:Init()
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnThink()
-	if IsValid(self.MyEnemy) then -- Homing Behavior
+	-- Homing Behavior
+	if IsValid(self.MyEnemy) && self.MyEnemy:Alive() then
 		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
-			phys:SetVelocity(self:CalculateProjectile("Line", self:GetPos(), self.MyEnemy:GetPos() + self.MyEnemy:OBBCenter() + self.MyEnemy:GetUp()*math.random(-50,50) + self.MyEnemy:GetRight()*math.random(-50,50), 600))
+			phys:SetVelocity(VJ.CalculateTrajectory(self, self.MyEnemy, "Line", self:GetPos() + VectorRand(-50, 50), 1, 600))
 			self:SetAngles(self:GetVelocity():GetNormal():Angle())
 		end
 	else
 		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
-			phys:SetVelocity(self:CalculateProjectile("Line", self:GetPos(), self:GetPos() + self:GetForward()*math.random(-80, 80)+ self:GetRight()*math.random(-80, 80) + self:GetUp()*math.random(-80, 80), 300))
+			phys:SetVelocity(VJ.CalculateTrajectory(self, NULL, "Line", self:GetPos(), self:GetPos() + VectorRand(-80, 80), 300))
 			self:SetAngles(self:GetVelocity():GetNormal():Angle())
 		end
 	end
