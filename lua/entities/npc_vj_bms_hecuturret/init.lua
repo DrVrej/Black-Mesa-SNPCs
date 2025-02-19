@@ -98,7 +98,7 @@ function ENT:OnThinkActive()
 			VJ.EmitSound(self, "vj_bms_groundturret/ping.wav", 75, 100)
 		end
 		
-		if IsValid(ene) && self:CustomAttackCheck_RangeAttack() == true && (self.AttackType == VJ.ATTACK_TYPE_RANGE or self.EnemyData.IsVisible) then
+		if IsValid(ene) && self:CustomAttackCheck_RangeAttack() == true && (self.AttackType == VJ.ATTACK_TYPE_RANGE or self.EnemyData.Visible) then
 			self:SetSkin(0)
 		else
 			self:SetSkin(1)
