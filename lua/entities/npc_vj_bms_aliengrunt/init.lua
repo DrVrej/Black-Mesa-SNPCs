@@ -51,7 +51,8 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:MultipleMeleeAttacks()
+function ENT:OnThinkAttack(isAttacking, enemy)
+	if isAttacking then return end
 	local eneData = self.EnemyData
 	if eneData.DistanceNearest > 150 && eneData.DistanceNearest < 210 && !self.PropInteraction_Found then
 		self.MeleeAttackDistance = 210
