@@ -11,9 +11,6 @@ ENT.PrintName		= "Snark Nest"
 ENT.Author 			= "DrVrej"
 ENT.Contact 		= "http://steamcommunity.com/groups/vrejgaming"
 ENT.Category		= "Black Mesa"
-
-ENT.Spawnable		= false
-ENT.AdminSpawnable	= false
 ENT.AutomaticFrameAdvance = true
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
