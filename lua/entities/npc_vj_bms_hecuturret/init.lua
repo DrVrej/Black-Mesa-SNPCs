@@ -17,7 +17,6 @@ ENT.AlertTimeout = VJ.SET(8, 8)
 ENT.HasMeleeAttack = false
 
 ENT.HasRangeAttack = true
-ENT.DisableDefaultRangeAttackCode = true
 ENT.AnimTbl_RangeAttack = false
 ENT.AnimTbl_RangeAttack = "fire"
 ENT.RangeAttackMaxDistance = 1300
@@ -54,12 +53,14 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnThink()
 	local parameter = self:GetPoseParameter("aim_yaw")
+	local curTurnSD = self.HECUTurret_TurningSD
 	if parameter != self.HECUTurret_CurrentParameter then
-		self.HECUTurret_TurningSD = CreateSound(self, "vj_bms_groundturret/motor_loop.wav")
-		self.HECUTurret_TurningSD:SetSoundLevel(70)
-		self.HECUTurret_TurningSD:PlayEx(1,100)
+		if !curTurnSD or (curTurnSD && !curTurnSD:IsPlaying()) then
+			VJ.STOPSOUND(curTurnSD)
+			self.HECUTurret_TurningSD = VJ.CreateSound(self, "vj_bms_groundturret/motor_loop.wav", 70, 100)
+		end
 	else
-		VJ.STOPSOUND(self.HECUTurret_TurningSD)
+		VJ.STOPSOUND(curTurnSD)
 	end
 	self.HECUTurret_CurrentParameter = parameter
 end
@@ -127,38 +128,39 @@ function ENT:OnAlert(ent)
 	self:PlayAnim("deploy", true, 0.7)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomRangeAttackCode()
-	local spawnPos = self:GetAttachment(self:LookupAttachment("muzzle")).Pos
-	
-	local bullet = {}
-	bullet.Num = 1
-	bullet.Src = spawnPos
-	bullet.Dir = (self:GetEnemy():GetPos() + self:GetEnemy():OBBCenter()) - spawnPos
-	bullet.Spread = 0.001
-	bullet.Tracer = 1
-	bullet.TracerName = "Tracer"
-	bullet.Force = 5
-	bullet.Damage = 3
-	bullet.AmmoType = "SMG1"
-	self:FireBullets(bullet)
-	
-	VJ.EmitSound(self, "vj_bms_groundturret/single.wav", 90, math.random(100, 110))
-	
-	ParticleEffectAttach("vj_bms_turret_full", PATTACH_POINT_FOLLOW, self, 2)
-	timer.Simple(0.2, function() if IsValid(self) then self:StopParticles() end end)
-	
-	local dynLight = ents.Create("light_dynamic")
-	dynLight:SetKeyValue("brightness", "4")
-	dynLight:SetKeyValue("distance", "120")
-	dynLight:SetPos(spawnPos)
-	dynLight:SetLocalAngles(self:GetAngles())
-	dynLight:Fire("Color", "255 150 60")
-	dynLight:SetParent(self)
-	dynLight:Spawn()
-	dynLight:Activate()
-	dynLight:Fire("TurnOn")
-	dynLight:Fire("Kill", "", 0.07)
-	self:DeleteOnRemove(dynLight)
+function ENT:OnRangeAttackExecute(status, enemy, projectile)
+	if status == "Init" then
+		local spawnPos = self:GetAttachment(self:LookupAttachment("muzzle")).Pos
+		self:FireBullets({
+			Num = 1,
+			Src = spawnPos,
+			Dir = (enemy:GetPos() + enemy:OBBCenter()) - spawnPos,
+			Spread = 0.001,
+			Tracer = 1,
+			TracerName = "Tracer",
+			Force = 5,
+			Damage = 3,
+			AmmoType = "SMG1"
+		})
+		
+		VJ.EmitSound(self, "vj_bms_groundturret/single.wav", 90, math.random(100, 110))
+		ParticleEffectAttach("vj_bms_turret_full", PATTACH_POINT_FOLLOW, self, 2)
+		timer.Simple(0.2, function() if IsValid(self) then self:StopParticles() end end)
+		
+		local dynLight = ents.Create("light_dynamic")
+		dynLight:SetKeyValue("brightness", "4")
+		dynLight:SetKeyValue("distance", "120")
+		dynLight:SetPos(spawnPos)
+		dynLight:SetLocalAngles(self:GetAngles())
+		dynLight:Fire("Color", "255 150 60")
+		dynLight:SetParent(self)
+		dynLight:Spawn()
+		dynLight:Activate()
+		dynLight:Fire("TurnOn")
+		dynLight:Fire("Kill", "", 0.07)
+		self:DeleteOnRemove(dynLight)
+		return true
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnDeath(dmginfo, hitgroup, status)

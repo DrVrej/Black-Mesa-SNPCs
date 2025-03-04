@@ -73,9 +73,9 @@ function ENT:MeleeAttackKnockbackVelocity(hitEnt)
 	return self:GetForward()*math.random(270, 290) + self:GetUp()*300
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomRangeAttackCode_AfterProjectileSpawn(projectile)
-	if IsValid(self:GetEnemy()) then
-		projectile.MyEnemy = self:GetEnemy()
+function ENT:OnRangeAttackExecute(status, enemy, projectile)
+	if status == "PostProjSpawn" then
+		projectile.MyEnemy = enemy
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
