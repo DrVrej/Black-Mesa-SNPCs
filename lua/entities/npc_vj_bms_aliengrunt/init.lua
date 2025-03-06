@@ -74,7 +74,7 @@ function ENT:MeleeAttackKnockbackVelocity(hitEnt)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnRangeAttackExecute(status, enemy, projectile)
-	if status == "PostProjSpawn" then
+	if status == "PostSpawn" then
 		projectile.MyEnemy = enemy
 	end
 end
