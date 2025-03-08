@@ -56,7 +56,7 @@ function ENT:Security_WeaponHolster(Type)
 		timer.Simple(0.25, function()
 			if IsValid(self) then
 				self:SetBodygroup(4, 1)
-				curWep.WorldModel_Invisible = true
+				curWep:SetDrawWorldModel(false)
 			end
 		end)
 	elseif Type == 1 then
@@ -66,7 +66,7 @@ function ENT:Security_WeaponHolster(Type)
 		timer.Simple(0.4, function()
 			if IsValid(self) then
 				self:SetBodygroup(4, 2)
-				curWep.WorldModel_Invisible = false
+				curWep:SetDrawWorldModel(true)
 			end
 		end)
 	end
@@ -76,7 +76,7 @@ function ENT:OnWeaponChange(newWeapon, oldWeapon, invSwitch)
 	if !invSwitch && newWeapon:GetClass() == "weapon_vj_glock17" then
 		self:SetWeaponState(VJ.WEP_STATE_HOLSTERED)
 		self:SetBodygroup(4, 1)
-		newWeapon.WorldModel_Invisible = true
+		newWeapon:SetDrawWorldModel(false)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -124,6 +124,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnDeathWeaponDrop(dmginfo, hitgroup, wepEnt)
 	self:SetBodygroup(4, 2)
-	wepEnt.WorldModel_Invisible = false
-	wepEnt:SetNW2Bool("VJ_WorldModel_Invisible", false)
+	if wepEnt.IsVJBaseWeapon then
+		wepEnt:SetDrawWorldModel(true)
+	end
 end

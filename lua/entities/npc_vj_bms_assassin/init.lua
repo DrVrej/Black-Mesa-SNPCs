@@ -119,12 +119,13 @@ function ENT:BMSASSASSIN_RESETCLOAK()
 	self:SetColor(colorVis)
 	self:DrawShadow(true)
 	self:RemoveFlags(FL_NOTARGET)
-	if IsValid(self:GetActiveWeapon()) then
+	local curWep = self:GetActiveWeapon()
+	if IsValid(curWep) then
 		if IsValid(self.SecondGun) then
 			self.SecondGun:SetColor(colorVis)
 			self.SecondGun:DrawShadow(true)
 		end
-		self:GetActiveWeapon().WorldModel_Invisible = false
+		curWep:SetDrawWorldModel(true)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -135,12 +136,13 @@ function ENT:BMSASSASSIN_DOCLOAK()
 	self:AddFlags(FL_NOTARGET)
 	self:SetColor(colorInv)
 	self:DrawShadow(false)
-	if IsValid(self:GetActiveWeapon()) then
+	local curWep = self:GetActiveWeapon()
+	if IsValid(curWep) then
 		if IsValid(self.SecondGun) then
 			self.SecondGun:SetColor(colorInv)
 			self.SecondGun:DrawShadow(false)
 		end
-		self:GetActiveWeapon().WorldModel_Invisible = true
+		curWep:SetDrawWorldModel(false)
 	end
 	if self.VJ_IsBeingControlled == false then
 		timer.Simple(math.random(6, 9), function() if IsValid(self) then self:BMSASSASSIN_RESETCLOAK() end end)
@@ -204,8 +206,7 @@ function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnDeathWeaponDrop(dmginfo, hitgroup, wepEnt)
-	wepEnt.WorldModel_Invisible = false
-	wepEnt:SetNW2Bool("VJ_WorldModel_Invisible", false)
+	wepEnt:SetDrawWorldModel(true)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorRed = VJ.Color2Byte(Color(130, 19, 10))
