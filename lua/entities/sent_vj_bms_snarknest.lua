@@ -38,7 +38,7 @@ function ENT:Initialize()
 	self:SetSolid(SOLID_BBOX)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:OnTakeDamage(dmginfo,data)
+function ENT:OnTakeDamage(dmginfo, data)
 	self:SpawnBloodParticles(dmginfo)
 	self:SpawnBloodDecals(dmginfo)
 	self:EmitSound("vj_base/impact/flesh_alien.wav", 80, math.random(80, 100))
@@ -90,5 +90,5 @@ function ENT:SpawnBloodDecals(dmginfo, hitgroup)
 	local posEnd = posStart +force:GetNormal() *length
 	local tr = util.TraceLine({start = posStart, endpos = posEnd, filter = self})
 	if !tr.HitWorld then return end
-	util.Decal("VJ_Blood_Red",tr.HitPos +tr.HitNormal,tr.HitPos -tr.HitNormal)
+	util.Decal("VJ_Blood_Red", tr.HitPos +tr.HitNormal, tr.HitPos -tr.HitNormal)
 end

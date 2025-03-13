@@ -36,13 +36,13 @@ ENT.IdleAlwaysWander = true
 ENT.HasDeathCorpse = false
 ENT.PropInteraction = "OnlyDamage"
 
-ENT.SoundTbl_Idle = {"vj_bms_snark/hunt1.wav","vj_bms_snark/hunt2.wav","vj_bms_snark/hunt3.wav","vj_bms_snark/hunt4.wav"}
-ENT.SoundTbl_Alert = {"vj_bms_snark/deploy1.wav","vj_bms_snark/deploy2.wav","vj_bms_snark/deploy3.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_bms_snark/bite01.wav","vj_bms_snark/bite02.wav","vj_bms_snark/bite03.wav","vj_bms_snark/bite04.wav","vj_bms_snark/bite05.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_snark/hunt1.wav","vj_bms_snark/hunt2.wav","vj_bms_snark/hunt3.wav","vj_bms_snark/hunt4.wav"}
-ENT.SoundTbl_LeapAttackDamage = {"vj_bms_snark/bite01.wav","vj_bms_snark/bite02.wav","vj_bms_snark/bite03.wav","vj_bms_snark/bite04.wav","vj_bms_snark/bite05.wav"}
-ENT.SoundTbl_LeapAttackDamageMiss = {"vj_bms_snark/hunt1.wav","vj_bms_snark/hunt2.wav","vj_bms_snark/hunt3.wav","vj_bms_snark/hunt4.wav"}
-ENT.SoundTbl_Pain = {"vj_bms_snark/die01.wav","vj_bms_snark/die02.wav","vj_bms_snark/die03.wav","vj_bms_snark/die04.wav"}
+ENT.SoundTbl_Idle = {"vj_bms_snark/hunt1.wav", "vj_bms_snark/hunt2.wav", "vj_bms_snark/hunt3.wav", "vj_bms_snark/hunt4.wav"}
+ENT.SoundTbl_Alert = {"vj_bms_snark/deploy1.wav", "vj_bms_snark/deploy2.wav", "vj_bms_snark/deploy3.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_bms_snark/bite01.wav", "vj_bms_snark/bite02.wav", "vj_bms_snark/bite03.wav", "vj_bms_snark/bite04.wav", "vj_bms_snark/bite05.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_snark/hunt1.wav", "vj_bms_snark/hunt2.wav", "vj_bms_snark/hunt3.wav", "vj_bms_snark/hunt4.wav"}
+ENT.SoundTbl_LeapAttackDamage = {"vj_bms_snark/bite01.wav", "vj_bms_snark/bite02.wav", "vj_bms_snark/bite03.wav", "vj_bms_snark/bite04.wav", "vj_bms_snark/bite05.wav"}
+ENT.SoundTbl_LeapAttackDamageMiss = {"vj_bms_snark/hunt1.wav", "vj_bms_snark/hunt2.wav", "vj_bms_snark/hunt3.wav", "vj_bms_snark/hunt4.wav"}
+ENT.SoundTbl_Pain = {"vj_bms_snark/die01.wav", "vj_bms_snark/die02.wav", "vj_bms_snark/die03.wav", "vj_bms_snark/die04.wav"}
 ENT.SoundTbl_Death = {"vj_bms_snark/blast1.wav"}
 
 -- Custom
@@ -52,8 +52,8 @@ ENT.Snark_NextJumpWalkT = 0
 function ENT:Init()
 	self:SetCollisionBounds(Vector(5, 5, 10), Vector(-5, -5, 0))
 	//self:PhysicsInitBox(self:GetModelBounds())
-	//self.MeleeAttackDamage = math.random(3,5)
-	//self.LeapAttackDamage = math.random(3,5)
+	//self.MeleeAttackDamage = math.random(3, 5)
+	//self.LeapAttackDamage = math.random(3, 5)
 	self:CapabilitiesAdd(bit.bor(CAP_MOVE_CLIMB))
 	self.Snark_EnergyTime = CurTime() + GetConVarNumber("vj_bms_snarkexplodetime")
 	if GetConVarNumber("vj_bms_snarkexplode") == 0 then self.Snark_CanExplode = false end
@@ -74,7 +74,7 @@ function ENT:OnThinkActive()
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnMeleeAttack_AfterChecks(TheHitEntity)
-	//PrintMessage(HUD_PRINTTALK,"MELEE")
+	//PrintMessage(HUD_PRINTTALK, "MELEE")
 	self.Snark_EnergyTime = self.Snark_EnergyTime + 0.5
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

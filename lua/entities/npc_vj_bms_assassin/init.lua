@@ -30,10 +30,10 @@ ENT.CombatDamageResponse_Cooldown = VJ.SET(2, 2.5)
 ENT.FootstepSoundTimerRun = 0.3
 ENT.FootstepSoundTimerWalk = 0.3
 
-ENT.SoundTbl_FootStep = {"vj_bms_assassin/step1.wav","vj_bms_assassin/step2.wav"}
-ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_assassin/kick1.wav","vj_bms_assassin/kick2.wav","vj_bms_assassin/kick3.wav","vj_bms_assassin/kick4.wav","vj_bms_assassin/kick5.wav","vj_bms_assassin/kick6.wav"}
-ENT.SoundTbl_Pain = {"vj_bms_assassin/pain1.wav","vj_bms_assassin/pain2.wav","vj_bms_assassin/pain3.wav","vj_bms_assassin/pain4.wav","vj_bms_assassin/pain5.wav","vj_bms_assassin/pain6.wav",}
-ENT.SoundTbl_Death = {"vj_bms_assassin/die1.wav","vj_bms_assassin/die2.wav","vj_bms_assassin/die3.wav","vj_bms_assassin/die4.wav","vj_bms_assassin/die5.wav","vj_bms_assassin/die6.wav",}
+ENT.SoundTbl_FootStep = {"vj_bms_assassin/step1.wav", "vj_bms_assassin/step2.wav"}
+ENT.SoundTbl_BeforeMeleeAttack = {"vj_bms_assassin/kick1.wav", "vj_bms_assassin/kick2.wav", "vj_bms_assassin/kick3.wav", "vj_bms_assassin/kick4.wav", "vj_bms_assassin/kick5.wav", "vj_bms_assassin/kick6.wav"}
+ENT.SoundTbl_Pain = {"vj_bms_assassin/pain1.wav", "vj_bms_assassin/pain2.wav", "vj_bms_assassin/pain3.wav", "vj_bms_assassin/pain4.wav", "vj_bms_assassin/pain5.wav", "vj_bms_assassin/pain6.wav", }
+ENT.SoundTbl_Death = {"vj_bms_assassin/die1.wav", "vj_bms_assassin/die2.wav", "vj_bms_assassin/die3.wav", "vj_bms_assassin/die4.wav", "vj_bms_assassin/die5.wav", "vj_bms_assassin/die6.wav", }
 
 -- Custom
 ENT.Assassin_NextJumpT = 0

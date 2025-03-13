@@ -40,14 +40,14 @@ ENT.FootstepSoundTimerRun = 0.25
 ENT.FootstepSoundTimerWalk = 0.6
 ENT.HasExtraMeleeAttackSounds = true
 
-ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav","vj_bms_bullsquid/step2.wav"}
-ENT.SoundTbl_Idle = {"vj_bms_bullsquid/Idle1.wav","vj_bms_bullsquid/Idle2.wav","vj_bms_bullsquid/Idle3.wav","vj_bms_bullsquid/Idle4.wav"}
-ENT.SoundTbl_Alert = {"vj_bms_bullsquid/detect1.wav","vj_bms_bullsquid/detect2.wav","vj_bms_bullsquid/detect3.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_bms_bullsquid/attack1.wav","vj_bms_bullsquid/attack2.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav","vj_bms_zombies/claw_miss2.wav"}
-ENT.SoundTbl_RangeAttack = {"vj_bms_bullsquid/goo_attack1.wav","vj_bms_bullsquid/goo_attack2.wav","vj_bms_bullsquid/goo_attack3.wav"}
-ENT.SoundTbl_Pain = {"vj_bms_bullsquid/pain1.wav","vj_bms_bullsquid/pain2.wav","vj_bms_bullsquid/pain3.wav","vj_bms_bullsquid/pain4.wav","vj_bms_bullsquid/pain5.wav"}
-ENT.SoundTbl_Death = {"vj_bms_bullsquid/die1.wav","vj_bms_bullsquid/die2.wav"}
+ENT.SoundTbl_FootStep = {"vj_bms_bullsquid/step1.wav", "vj_bms_bullsquid/step2.wav"}
+ENT.SoundTbl_Idle = {"vj_bms_bullsquid/Idle1.wav", "vj_bms_bullsquid/Idle2.wav", "vj_bms_bullsquid/Idle3.wav", "vj_bms_bullsquid/Idle4.wav"}
+ENT.SoundTbl_Alert = {"vj_bms_bullsquid/detect1.wav", "vj_bms_bullsquid/detect2.wav", "vj_bms_bullsquid/detect3.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_bms_bullsquid/attack1.wav", "vj_bms_bullsquid/attack2.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav", "vj_bms_zombies/claw_miss2.wav"}
+ENT.SoundTbl_RangeAttack = {"vj_bms_bullsquid/goo_attack1.wav", "vj_bms_bullsquid/goo_attack2.wav", "vj_bms_bullsquid/goo_attack3.wav"}
+ENT.SoundTbl_Pain = {"vj_bms_bullsquid/pain1.wav", "vj_bms_bullsquid/pain2.wav", "vj_bms_bullsquid/pain3.wav", "vj_bms_bullsquid/pain4.wav", "vj_bms_bullsquid/pain5.wav"}
+ENT.SoundTbl_Death = {"vj_bms_bullsquid/die1.wav", "vj_bms_bullsquid/die2.wav"}
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()

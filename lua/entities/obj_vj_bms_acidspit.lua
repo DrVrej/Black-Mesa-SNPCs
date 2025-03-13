@@ -38,7 +38,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
 --
-function ENT:OnDestroy(data,phys)
+function ENT:OnDestroy(data, phys)
 	local effectData = EffectData()
 	effectData:SetOrigin(data.HitPos)
 	effectData:SetScale(1)

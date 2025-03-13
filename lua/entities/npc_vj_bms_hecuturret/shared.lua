@@ -21,10 +21,10 @@ if (CLIENT) then
 				filter = self,
 			})
 			render.SetMaterial(matLaser)
-			render.DrawBeam(attach.Pos,tr.HitPos, 1, 0, 1, colorRed)
+			render.DrawBeam(attach.Pos, tr.HitPos, 1, 0, 1, colorRed)
 			if tr.Hit == true then
 				render.SetMaterial(matGlow)
-				render.DrawSprite(tr.HitPos,4,4,colorRed)
+				render.DrawSprite(tr.HitPos, 4, 4, colorRed)
 			end
 		end
 	end

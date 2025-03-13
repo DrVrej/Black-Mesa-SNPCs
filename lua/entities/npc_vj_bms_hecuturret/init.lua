@@ -28,7 +28,7 @@ ENT.NextRangeAttackTime = 0
 ENT.NextAnyAttackTime_Range = 0.3
 
 ENT.SoundTbl_Alert = {"vj_bms_groundturret/deploy.wav"}
-ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav","ambient/energy/spark2.wav","ambient/energy/spark3.wav","ambient/energy/spark4.wav"}
+ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav", "ambient/energy/spark2.wav", "ambient/energy/spark3.wav", "ambient/energy/spark4.wav"}
 ENT.SoundTbl_Death = {"vj_bms_groundturret/die.wav"}
 
 ENT.AlertSoundLevel = 75
@@ -70,30 +70,30 @@ function ENT:OnThinkActive()
 	if IsValid(ene) or (self:GetNPCState() == NPC_STATE_ALERT or self:GetNPCState() == NPC_STATE_COMBAT) then
 		self.HECUTurret_StandDown = false
 		local glow = ents.Create("env_sprite")
-		glow:SetKeyValue("model","vj_base/sprites/glow.vmt")
-		glow:SetKeyValue("scale","0.04")
-		glow:SetKeyValue("rendermode","5")
-		glow:SetKeyValue("rendercolor","255 0 0")
-		glow:SetKeyValue("spawnflags","1") -- If animated
+		glow:SetKeyValue("model", "vj_base/sprites/glow.vmt")
+		glow:SetKeyValue("scale", "0.04")
+		glow:SetKeyValue("rendermode", "5")
+		glow:SetKeyValue("rendercolor", "255 0 0")
+		glow:SetKeyValue("spawnflags", "1") -- If animated
 		glow:SetParent(self)
-		glow:Fire("SetParentAttachment","laser",0)
+		glow:Fire("SetParentAttachment", "laser", 0)
 		glow:Spawn()
 		glow:Activate()
-		glow:Fire("Kill","",0.1)
+		glow:Fire("Kill", "", 0.1)
 		self:DeleteOnRemove(glow)
 		
 		if CurTime() > self.HECUTurret_NextAlarmT then
 			glow = ents.Create("env_sprite")
-			glow:SetKeyValue("model","vj_base/sprites/glow.vmt")
-			glow:SetKeyValue("scale","0.1")
-			glow:SetKeyValue("rendermode","5")
-			glow:SetKeyValue("rendercolor","255 0 0")
-			glow:SetKeyValue("spawnflags","1") -- If animated
+			glow:SetKeyValue("model", "vj_base/sprites/glow.vmt")
+			glow:SetKeyValue("scale", "0.1")
+			glow:SetKeyValue("rendermode", "5")
+			glow:SetKeyValue("rendercolor", "255 0 0")
+			glow:SetKeyValue("spawnflags", "1") -- If animated
 			glow:SetParent(self)
-			glow:Fire("SetParentAttachment","alarm",0)
+			glow:Fire("SetParentAttachment", "alarm", 0)
 			glow:Spawn()
 			glow:Activate()
-			glow:Fire("Kill","",0.1)
+			glow:Fire("Kill", "", 0.1)
 			self:DeleteOnRemove(glow)
 			self.HECUTurret_NextAlarmT = CurTime() + 3
 			VJ.EmitSound(self, "vj_bms_groundturret/ping.wav", 75, 100)
@@ -109,7 +109,7 @@ function ENT:OnThinkActive()
 			self:SetSkin(0)
 			if self.HECUTurret_StandDown == false then
 				self.HECUTurret_StandDown = true
-				self:PlayAnim({"retract"},true,1)
+				self:PlayAnim({"retract"}, true, 1)
 				VJ.EmitSound(self, "vj_bms_groundturret/retract.wav", 65, math.random(100, 110))
 			end
 		end
@@ -173,7 +173,7 @@ local defAng = Angle(0, 0, 0)
 --
 function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
 	local spawnPos = corpseEnt:GetAttachment(corpseEnt:LookupAttachment("smoke")).Pos
-	ParticleEffectAttach("smoke_exhaust_01a",PATTACH_POINT_FOLLOW,corpseEnt,4)
+	ParticleEffectAttach("smoke_exhaust_01a", PATTACH_POINT_FOLLOW, corpseEnt, 4)
 	ParticleEffect("explosion_turret_break_fire", spawnPos, defAng, corpseEnt)
 	ParticleEffect("explosion_turret_break_flash", spawnPos, defAng, corpseEnt)
 	ParticleEffect("explosion_turret_break_pre_smoke Version #2", spawnPos, defAng, corpseEnt)

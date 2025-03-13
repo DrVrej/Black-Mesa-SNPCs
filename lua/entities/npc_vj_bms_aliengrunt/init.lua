@@ -28,15 +28,15 @@ ENT.FootstepSoundTimerRun = 0.5
 ENT.FootstepSoundTimerWalk = 1
 ENT.HasExtraMeleeAttackSounds = true
 
-ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav","vJ_bms_aliengrunt/step2.wav","vJ_bms_aliengrunt/step3.wav","vJ_bms_aliengrunt/step4.wav","vJ_bms_aliengrunt/step5.wav","vJ_bms_aliengrunt/step6.wav"}
-ENT.SoundTbl_Idle = {"vJ_bms_aliengrunt/idle1.wav","vJ_bms_aliengrunt/idle2.wav","vJ_bms_aliengrunt/idle3.wav","vJ_bms_aliengrunt/idle4.wav","vJ_bms_aliengrunt/idle5.wav","vJ_bms_aliengrunt/idle6.wav"}
-ENT.SoundTbl_Alert = {"vJ_bms_aliengrunt/alert1.wav","vJ_bms_aliengrunt/alert2.wav","vJ_bms_aliengrunt/alert3.wav","vJ_bms_aliengrunt/alert4.wav","vJ_bms_aliengrunt/alert5.wav","vJ_bms_aliengrunt/alert6.wav"}
-ENT.SoundTbl_MeleeAttack = {"vJ_bms_aliengrunt/melee1.wav","vJ_bms_aliengrunt/melee2.wav","vJ_bms_aliengrunt/melee3.wav","vJ_bms_aliengrunt/melee4.wav","vJ_bms_aliengrunt/melee5.wav","vJ_bms_aliengrunt/melee6.wav"}
-ENT.SoundTbl_MeleeAttackExtra = {"physics/body/body_medium_impact_hard1.wav","physics/body/body_medium_impact_hard2.wav","physics/body/body_medium_impact_hard3.wav","physics/body/body_medium_impact_hard4.wav","physics/body/body_medium_impact_hard5.wav","physics/body/body_medium_impact_hard6.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav","vj_bms_zombies/claw_miss2.wav"}
-ENT.SoundTbl_RangeAttack = {"vJ_bms_aliengrunt/range1.wav","vJ_bms_aliengrunt/range2.wav"}
-ENT.SoundTbl_Pain = {"vJ_bms_aliengrunt/pain1.wav","vJ_bms_aliengrunt/pain2.wav","vJ_bms_aliengrunt/pain3.wav","vJ_bms_aliengrunt/pain4.wav","vJ_bms_aliengrunt/pain5.wav","vJ_bms_aliengrunt/pain6.wav"}
-ENT.SoundTbl_Death = {"vJ_bms_aliengrunt/die1.wav","vJ_bms_aliengrunt/die2.wav","vJ_bms_aliengrunt/die3.wav"}
+ENT.SoundTbl_FootStep = {"vJ_bms_aliengrunt/step1.wav", "vJ_bms_aliengrunt/step2.wav", "vJ_bms_aliengrunt/step3.wav", "vJ_bms_aliengrunt/step4.wav", "vJ_bms_aliengrunt/step5.wav", "vJ_bms_aliengrunt/step6.wav"}
+ENT.SoundTbl_Idle = {"vJ_bms_aliengrunt/idle1.wav", "vJ_bms_aliengrunt/idle2.wav", "vJ_bms_aliengrunt/idle3.wav", "vJ_bms_aliengrunt/idle4.wav", "vJ_bms_aliengrunt/idle5.wav", "vJ_bms_aliengrunt/idle6.wav"}
+ENT.SoundTbl_Alert = {"vJ_bms_aliengrunt/alert1.wav", "vJ_bms_aliengrunt/alert2.wav", "vJ_bms_aliengrunt/alert3.wav", "vJ_bms_aliengrunt/alert4.wav", "vJ_bms_aliengrunt/alert5.wav", "vJ_bms_aliengrunt/alert6.wav"}
+ENT.SoundTbl_MeleeAttack = {"vJ_bms_aliengrunt/melee1.wav", "vJ_bms_aliengrunt/melee2.wav", "vJ_bms_aliengrunt/melee3.wav", "vJ_bms_aliengrunt/melee4.wav", "vJ_bms_aliengrunt/melee5.wav", "vJ_bms_aliengrunt/melee6.wav"}
+ENT.SoundTbl_MeleeAttackExtra = {"physics/body/body_medium_impact_hard1.wav", "physics/body/body_medium_impact_hard2.wav", "physics/body/body_medium_impact_hard3.wav", "physics/body/body_medium_impact_hard4.wav", "physics/body/body_medium_impact_hard5.wav", "physics/body/body_medium_impact_hard6.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav", "vj_bms_zombies/claw_miss2.wav"}
+ENT.SoundTbl_RangeAttack = {"vJ_bms_aliengrunt/range1.wav", "vJ_bms_aliengrunt/range2.wav"}
+ENT.SoundTbl_Pain = {"vJ_bms_aliengrunt/pain1.wav", "vJ_bms_aliengrunt/pain2.wav", "vJ_bms_aliengrunt/pain3.wav", "vJ_bms_aliengrunt/pain4.wav", "vJ_bms_aliengrunt/pain5.wav", "vJ_bms_aliengrunt/pain6.wav"}
+ENT.SoundTbl_Death = {"vJ_bms_aliengrunt/die1.wav", "vJ_bms_aliengrunt/die2.wav", "vJ_bms_aliengrunt/die3.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	self:SetCollisionBounds(Vector(25, 25, 85), Vector(-25, -25, 0))

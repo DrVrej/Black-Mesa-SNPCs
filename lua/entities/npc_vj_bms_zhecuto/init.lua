@@ -22,13 +22,13 @@ ENT.MeleeAttackDamage = 25
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true
 
-ENT.SoundTbl_FootStep = {"vj_bms_zombies/foot1.wav","vj_bms_zombies/foot2.wav","vj_bms_zombies/foot3.wav"}
-ENT.SoundTbl_Idle = {"vj_bms_zombies/idle1.wav","vj_bms_zombies/idle2.wav","vj_bms_zombies/idle3.wav","vj_bms_zombies/idle4.wav","vj_bms_zombies/idle5.wav","vj_bms_zombies/idle6.wav"}
-ENT.SoundTbl_Alert = {"vj_bms_zombies/alert1.wav","vj_bms_zombies/alert2.wav","vj_bms_zombies/alert3.wav","vj_bms_zombies/alert4.wav","vj_bms_zombies/alert5.wav","vj_bms_zombies/alert6.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_bms_zombies/attack01.wav","vj_bms_zombies/attack02.wav","vj_bms_zombies/attack03.wav","vj_bms_zombies/attack04.wav","vj_bms_zombies/attack05.wav","vj_bms_zombies/attack06.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav","vj_bms_zombies/claw_miss2.wav"}
-ENT.SoundTbl_Pain = {"vj_bms_zombies/pain1.wav","vj_bms_zombies/pain2.wav","vj_bms_zombies/pain3.wav","vj_bms_zombies/pain4.wav","vj_bms_zombies/pain5.wav","vj_bms_zombies/pain7.wav","vj_bms_zombies/pain8.wav","vj_bms_zombies/pain9.wav","vj_bms_zombies/pain10.wav"} /*,"vj_bms_zombies/pain6.wav"*/
-ENT.SoundTbl_Death = {"vj_bms_zombies/die1.wav","vj_bms_zombies/die2.wav","vj_bms_zombies/die3.wav","vj_bms_zombies/die4.wav","vj_bms_zombies/die5.wav"}
+ENT.SoundTbl_FootStep = {"vj_bms_zombies/foot1.wav", "vj_bms_zombies/foot2.wav", "vj_bms_zombies/foot3.wav"}
+ENT.SoundTbl_Idle = {"vj_bms_zombies/idle1.wav", "vj_bms_zombies/idle2.wav", "vj_bms_zombies/idle3.wav", "vj_bms_zombies/idle4.wav", "vj_bms_zombies/idle5.wav", "vj_bms_zombies/idle6.wav"}
+ENT.SoundTbl_Alert = {"vj_bms_zombies/alert1.wav", "vj_bms_zombies/alert2.wav", "vj_bms_zombies/alert3.wav", "vj_bms_zombies/alert4.wav", "vj_bms_zombies/alert5.wav", "vj_bms_zombies/alert6.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_bms_zombies/attack01.wav", "vj_bms_zombies/attack02.wav", "vj_bms_zombies/attack03.wav", "vj_bms_zombies/attack04.wav", "vj_bms_zombies/attack05.wav", "vj_bms_zombies/attack06.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_bms_zombies/claw_miss1.wav", "vj_bms_zombies/claw_miss2.wav"}
+ENT.SoundTbl_Pain = {"vj_bms_zombies/pain1.wav", "vj_bms_zombies/pain2.wav", "vj_bms_zombies/pain3.wav", "vj_bms_zombies/pain4.wav", "vj_bms_zombies/pain5.wav", "vj_bms_zombies/pain7.wav", "vj_bms_zombies/pain8.wav", "vj_bms_zombies/pain9.wav", "vj_bms_zombies/pain10.wav"} /*, "vj_bms_zombies/pain6.wav"*/
+ENT.SoundTbl_Death = {"vj_bms_zombies/die1.wav", "vj_bms_zombies/die2.wav", "vj_bms_zombies/die3.wav", "vj_bms_zombies/die4.wav", "vj_bms_zombies/die5.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	self:SetCollisionBounds(Vector(20, 20 , 26), Vector(-20, -20, 0))
