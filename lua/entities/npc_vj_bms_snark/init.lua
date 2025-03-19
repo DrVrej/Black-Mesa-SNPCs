@@ -73,9 +73,10 @@ function ENT:OnThinkActive()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnMeleeAttack_AfterChecks(TheHitEntity)
-	//PrintMessage(HUD_PRINTTALK, "MELEE")
-	self.Snark_EnergyTime = self.Snark_EnergyTime + 0.5
+function ENT:OnMeleeAttackExecute(status, ent, isProp)
+	if status == "PreDamage" then
+		self.Snark_EnergyTime = self.Snark_EnergyTime + 0.5
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnLeapAttack(status, enemy)
