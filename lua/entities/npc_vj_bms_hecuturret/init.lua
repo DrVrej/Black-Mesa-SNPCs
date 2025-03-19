@@ -99,7 +99,7 @@ function ENT:OnThinkActive()
 			VJ.EmitSound(self, "vj_bms_groundturret/ping.wav", 75, 100)
 		end
 		
-		if IsValid(ene) && self:CustomAttackCheck_RangeAttack() == true && (self.AttackType == VJ.ATTACK_TYPE_RANGE or self.EnemyData.Visible) then
+		if IsValid(ene) && self:OnRangeAttack("PreInit", ene) != true && (self.AttackType == VJ.ATTACK_TYPE_RANGE or self.EnemyData.Visible) then
 			self:SetSkin(0)
 		else
 			self:SetSkin(1)
@@ -116,12 +116,13 @@ function ENT:OnThinkActive()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomAttackCheck_RangeAttack()
-	local viewcode = ((self:GetEnemy():GetPos() + self:GetEnemy():OBBCenter()) - (self:GetPos() + self:OBBCenter())):Angle()
-	local viewang = math.abs(viewcode.y - (self:GetAngles().y + self:GetPoseParameter("aim_yaw")))
-	if viewang >= 330 then viewang = viewang - 360 end
-	if math.abs(viewang) <= 10 then return true end
-	return false
+function ENT:OnRangeAttack(status, enemy)
+	if status == "PreInit" then
+		local viewang = math.abs(((enemy:GetPos() + enemy:OBBCenter()) - (self:GetPos() + self:OBBCenter())):Angle().y - (self:GetAngles().y + self:GetPoseParameter("aim_yaw")))
+		if viewang >= 330 then viewang = viewang - 360 end
+		if math.abs(viewang) <= 10 then return false end
+		return true
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnAlert(ent)
