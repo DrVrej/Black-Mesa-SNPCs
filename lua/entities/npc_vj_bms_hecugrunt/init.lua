@@ -131,9 +131,9 @@ function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 	return true
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpse)
 	if self:GetBodygroup(2) == 1 then
-		corpseEnt:SetBodygroup(2, 0)
+		corpse:SetBodygroup(2, 0)
 		self:CreateExtraDeathCorpse("prop_physics", "models/humans/props/marine_cigar.mdl", {Pos=self:LocalToWorld(Vector(0, 0, -5))})
 	end
 	if IsValid(self.HECU_Beret) then

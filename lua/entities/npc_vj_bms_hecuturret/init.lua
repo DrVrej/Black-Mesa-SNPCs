@@ -172,13 +172,13 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defAng = Angle(0, 0, 0)
 --
-function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
-	local spawnPos = corpseEnt:GetAttachment(corpseEnt:LookupAttachment("smoke")).Pos
-	ParticleEffectAttach("smoke_exhaust_01a", PATTACH_POINT_FOLLOW, corpseEnt, 4)
-	ParticleEffect("explosion_turret_break_fire", spawnPos, defAng, corpseEnt)
-	ParticleEffect("explosion_turret_break_flash", spawnPos, defAng, corpseEnt)
-	ParticleEffect("explosion_turret_break_pre_smoke Version #2", spawnPos, defAng, corpseEnt)
-	ParticleEffect("explosion_turret_break_sparks", spawnPos, defAng, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpse)
+	local spawnPos = corpse:GetAttachment(corpse:LookupAttachment("smoke")).Pos
+	ParticleEffectAttach("smoke_exhaust_01a", PATTACH_POINT_FOLLOW, corpse, 4)
+	ParticleEffect("explosion_turret_break_fire", spawnPos, defAng, corpse)
+	ParticleEffect("explosion_turret_break_flash", spawnPos, defAng, corpse)
+	ParticleEffect("explosion_turret_break_pre_smoke Version #2", spawnPos, defAng, corpse)
+	ParticleEffect("explosion_turret_break_sparks", spawnPos, defAng, corpse)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnRemove()

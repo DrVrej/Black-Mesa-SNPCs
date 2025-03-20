@@ -69,7 +69,7 @@ function ENT:OnThinkAttack(isAttacking, enemy)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:MeleeAttackKnockbackVelocity(hitEnt)
+function ENT:MeleeAttackKnockbackVelocity(ent)
 	return self:GetForward()*math.random(270, 290) + self:GetUp()*300
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

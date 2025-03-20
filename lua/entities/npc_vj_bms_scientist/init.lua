@@ -72,14 +72,14 @@ function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 	return true
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo, hitgroup, corpse)
 	if self:GetBodygroup(3) == 1 then
 		self:CreateExtraDeathCorpse("prop_physics", "models/humans/props/scientist_syringe.mdl", {Pos=self:LocalToWorld(Vector(0, 12, 0))})
-		corpseEnt:SetBodygroup(3, 0)
+		corpse:SetBodygroup(3, 0)
 	end
 	
 	if self:GetBodygroup(2) == 4 then
 		self:CreateExtraDeathCorpse("prop_physics", "models/props_office/pencil.mdl", {Pos=self:GetAttachment(self:LookupAttachment("eyes")).Pos + self:GetRight()*-2.5})
-		corpseEnt:SetBodygroup(2, 0)
+		corpse:SetBodygroup(2, 0)
 	end
 end

@@ -45,7 +45,7 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:OnCreateDeathCorpse(dmginfo,  hitgroup,  corpseEnt)
+function ENT:OnCreateDeathCorpse(dmginfo,  hitgroup,  corpse)
 	if self:GetBodygroup(1) == 1 then return false end -- Only continue if crab bodygroup is set
 	local spawnType = math.random(1, 3)
 	local dmgType = dmginfo:GetDamageType()
@@ -55,9 +55,9 @@ function ENT:OnCreateDeathCorpse(dmginfo,  hitgroup,  corpseEnt)
 		self:SetBodygroup(1, 0)
 	elseif spawnType == 2 then -- Dead crab spawns
 		self:CreateExtraDeathCorpse("prop_ragdoll", "models/VJ_BLACKMESA/headcrab.mdl", {Pos=self:GetAttachment(self:LookupAttachment("head")).Pos, Ang=self:GetAttachment(self:LookupAttachment("head")).Ang})
-		corpseEnt:SetBodygroup(1, 1)
+		corpse:SetBodygroup(1, 1)
 	elseif spawnType == 3 then -- Alive crab spawns
-		corpseEnt:SetBodygroup(1, 1)
+		corpse:SetBodygroup(1, 1)
 		local crab = ents.Create("npc_headcrab")
 		local enemy = self:GetEnemy()
 		local pos = self:GetAttachment(self:LookupAttachment("head")).Pos
@@ -66,7 +66,7 @@ function ENT:OnCreateDeathCorpse(dmginfo,  hitgroup,  corpseEnt)
 		crab:SetVelocity(dmginfo:GetDamageForce() / 58)
 		crab:Spawn()
 		crab:Activate()
-		if corpseEnt:IsOnFire() then crab:Ignite(math.Rand(8, 10), 0) end
+		if corpse:IsOnFire() then crab:Ignite(math.Rand(8, 10), 0) end
 		timer.Simple(0.05, function()
 			if IsValid(crab) then
 				crab:SetPos(pos)
