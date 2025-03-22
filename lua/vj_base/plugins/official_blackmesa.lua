@@ -94,21 +94,21 @@ VJ.AddConVar("vj_bms_blackopsassassin_cloak", 1, FCVAR_ARCHIVE) -- Enable Bullsq
 
 -- Menu --
 if CLIENT then
-	local function VJ_BMSMENU_MAIN(Panel)
+	local function VJ_BMSMENU_MAIN(panel)
 		if !game.SinglePlayer() && !LocalPlayer():IsAdmin() then
-			Panel:AddControl("Label", {Text = "#vjbase.menu.general.admin.not"})
-			Panel:ControlHelp("#vjbase.menu.general.admin.only")
+			panel:Help("#vjbase.menu.general.admin.not")
+			panel:Help("#vjbase.menu.general.admin.only")
 			return
 		end
-		Panel:AddControl( "Label", {Text = "Notice: Only admins can change this settings."})
-		Panel:AddControl("Button", {Text = "Reset Everything", Command = "vj_bms_snarkexplode 1\n vj_bms_snarkexplodetime 15\n vj_bms_bullsquid_gib 1\n vj_bms_blackopsassassin_cloak 1"})
-		Panel:AddControl("Checkbox", {Label = "Snark Explodes?", Command = "vj_bms_snarkexplode"})
-		Panel:ControlHelp("Should Snark explode after its time expires?")
-		Panel:AddControl("Slider", {Label = "Time Until Snark Explodes", min = 0, max = 300, Command = "vj_bms_snarkexplodetime"})
-		Panel:ControlHelp("Total of 300 seconds (5 Minutes)")
-		Panel:AddControl("Checkbox", {Label = "Enable Bullsquid Gibs?", Command = "vj_bms_bullsquid_gib"})
-		Panel:ControlHelp("Disable this if you are experiencing crashes when Bullsquid gibs")
-		Panel:AddControl("Checkbox", {Label = "Can Black Ops Assassin Cloak?", Command = "vj_bms_blackopsassassin_cloak"})
+		panel:Help("#vjbase.menu.general.admin.only")
+		panel:AddControl("Button", {Text = "Reset Everything", Command = "vj_bms_snarkexplode 1\n vj_bms_snarkexplodetime 15\n vj_bms_bullsquid_gib 1\n vj_bms_blackopsassassin_cloak 1"})
+		panel:CheckBox("Snark Explodes?", "vj_bms_snarkexplode")
+		panel:ControlHelp("Should Snark explode after its time expires?")
+		panel:NumSlider("Time Until Snark Explodes", "vj_bms_snarkexplodetime", 0, 300, 0)
+		panel:ControlHelp("Total of 300 seconds (5 Minutes)")
+		panel:CheckBox("Enable Bullsquid Gibs?", "vj_bms_bullsquid_gib")
+		panel:ControlHelp("Disable this if you are experiencing crashes when Bullsquid gibs")
+		panel:CheckBox("Can Black Ops Assassin Cloak?", "vj_bms_blackopsassassin_cloak")
 	end
 	hook.Add( "PopulateToolMenu", "VJ_ADDTOMENU_BMS", function()
 		spawnmenu.AddToolMenuOption( "DrVrej", "SNPC Configures", "Black Mesa", "Black Mesa", "", "", VJ_BMSMENU_MAIN, {} )
