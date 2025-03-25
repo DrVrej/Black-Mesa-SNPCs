@@ -111,6 +111,6 @@ if CLIENT then
 		panel:CheckBox("Can Black Ops Assassin Cloak?", "vj_bms_blackopsassassin_cloak")
 	end
 	hook.Add( "PopulateToolMenu", "VJ_ADDTOMENU_BMS", function()
-		spawnmenu.AddToolMenuOption( "DrVrej", "SNPC Configures", "Black Mesa", "Black Mesa", "", "", VJ_BMSMENU_MAIN, {} )
+		spawnmenu.AddToolMenuOption("DrVrej", "SNPC Configures", "Black Mesa", "Black Mesa", "", "", VJ_BMSMENU_MAIN)
 	end)
 end
